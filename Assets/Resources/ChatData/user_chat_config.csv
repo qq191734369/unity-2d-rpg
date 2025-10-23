@@ -1,0 +1,9 @@
+﻿id,type,owner,group,speaker,next,options,content,action,extra
+1,normal,Slime,debug,Laya,#,2-3,你好！,#,#
+2,option,Slime,debug,#,4,#,不进入战斗,#,#
+3,option,Slime,debug,#,#,#,打一架,battle,Slime:3:1-5;Slime:1:10-10
+4,normal,Slime,debug,Slime,#,#,再见,#,#
+6,normal,Tina,join,Laya,7,#,Hellow,#,#
+7,normal,Tina,join,Tina,#,8-9,我可以加入你吗？,#,#
+8,option,Tina,join,#,#,#,好的,join,#
+9,option,Tina,join,#,#,#,我再想想,#,#

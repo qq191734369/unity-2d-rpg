@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f798a6e61ea7361409d2ec60b6ce54a2, type: 3}
+  m_Name: Slime
+  m_EditorClassIdentifier: 
+  Level: 1
+  Name: Slime
+  Description: 
+  MaxHealth: 10
+  CurrentHealth: 10
+  Speed: 1
+  Attack: 1
+  Defense: 1
+  OverWorldPrefab: {fileID: 8997256066204761865, guid: 4059972ef0f521c48bed1708155d7db8, type: 3}
+  BattlePrefab: {fileID: 8997256066204761865, guid: 85f0d407470bfab44b7cc55c288bd36a, type: 3}

@@ -1,0 +1,4 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Data/UIDocument/LoadingMask.uss?fileID=7433441132597879392&amp;guid=495bcd1c2d5e8f444a6bf2eb8837662a&amp;type=3#LoadingMask" />
+    <ui:VisualElement picking-mode="Ignore" name="Mask" class="bg" style="flex-grow: 1; display: none;" />
+</ui:UXML>

@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Data/UIDocument/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=faaa61ffc80cd7c469cbc86a90a67d33&amp;type=3#MainMenu" />
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; justify-content: center;">
+        <ui:VisualElement name="Background" style="flex-grow: 0; flex-basis: 50%; align-items: stretch; background-color: rgb(111, 111, 111);">
+            <ui:VisualElement name="Container" style="flex-grow: 1; align-items: stretch; justify-content: space-around;">
+                <ui:Button text="退出游戏" name="ExitButton" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

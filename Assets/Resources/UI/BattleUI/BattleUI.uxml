@@ -1,0 +1,27 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/BattleUI/BattleUI.uss?fileID=7433441132597879392&amp;guid=06a12aa7b2c69d64b86650125462ad65&amp;type=3#BattleUI" />
+    <ui:VisualElement name="Container" class="container">
+        <ui:VisualElement name="Menu" class="menu" style="flex-wrap: wrap; flex-shrink: 0;">
+            <ui:VisualElement name="Attack" class="btn">
+                <ui:Label text="攻击" class="btnText" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Run" class="btn">
+                <ui:Label text="逃跑" class="btnText" />
+            </ui:VisualElement>
+            <ui:VisualElement name="Status" class="btn">
+                <ui:Label text="状态" class="btnText" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="BattleInfo" enabled="true" class="battleInfo" style="flex-grow: 0; display: none; flex-shrink: 1;">
+            <ui:ScrollView name="ScrollInfo" style="flex-grow: 1;">
+                <ui:Label text="战斗信息：&#10;12312313&#10;战斗信息战斗信息战斗信息战斗信息战斗信息战斗信息战斗信息战斗信息战斗信息战斗信息战斗信息战斗信息" name="BattleInfoText" emoji-fallback-support="false" selectable="false" double-click-selects-word="false" triple-click-selects-line="false" class="battleInfoText" style="color: rgb(255, 255, 255); font-size: 40px;" />
+            </ui:ScrollView>
+        </ui:VisualElement>
+        <ui:VisualElement name="EnemyList" class="enemyList" style="display: none;">
+            <UIEnemyItem name="UIEnemyItem" />
+        </ui:VisualElement>
+        <ui:VisualElement name="BattlerInfo" class="battlerInfo" style="flex-grow: 1;">
+            <ui:Label text="Label" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

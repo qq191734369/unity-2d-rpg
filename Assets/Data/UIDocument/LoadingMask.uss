@@ -1,0 +1,12 @@
+.bg {
+    opacity: 0;
+    transition-timing-function: linear, ease;
+    transition-property: background-color, opacity;
+    transition-duration: 2s, 2s;
+    display: none;
+}
+
+.bg.fade {
+    background-color: rgb(0, 0, 0);
+    opacity: 1;
+}

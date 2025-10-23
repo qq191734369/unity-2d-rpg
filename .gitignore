@@ -1,0 +1,65 @@
+# ============= #
+# Unity 特定文件 #
+# ============= #
+
+Library/
+Temp/
+obj/
+Build/
+Builds/
+Logs/
+UserSettings/
+
+# 内存中的资产
+*.stackdump
+
+# 构建生成文件
+*.apk
+*.aab
+*.unitypackage
+
+# 崩溃报告
+[Cc]rash[Rr]eports/
+
+# 包管理器缓存文件夹
+
+# 自动生成的 VS/Mono 文件
+
+# ============= #
+# OS 生成文件 #
+# ============= #
+
+# OSX
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Windows
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ============= #
+# 项目特定设置 #
+# ============= #
+
+# Asset store 配置
+[Aa]ssets/AssetStoreTools*
+
+# Visual Studio 代码编辑器配置
+.vscode/
+.idea/
+.vs/
+
+# ============= #
+# 第三方插件 #
+# ============= #
+
+# 如果有第三方插件需要忽略，在这里添加
+# /[Aa]ssets/Plugins/ThirdParty/
