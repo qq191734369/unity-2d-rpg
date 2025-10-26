@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private float speed;
     
     private Vector2 playerMove;
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private List<InteractableObject> nearbyInteractables = new List<InteractableObject>();
     private GameManager gameManager;
@@ -16,7 +16,7 @@ public class PlayerMove : MonoBehaviour
 
     private void Awake()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         GameManager.OnGameInited(init);
@@ -58,7 +58,7 @@ public class PlayerMove : MonoBehaviour
         if (playerMove != Vector2.zero)
         {
             Vector2 position = new Vector2(transform.position.x, transform.position.y);
-            rigidbody.MovePosition(position + playerMove * speed * Time.fixedDeltaTime);
+            rb.MovePosition(position + playerMove * speed * Time.fixedDeltaTime);
         }
     }
 }

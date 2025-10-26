@@ -22,6 +22,8 @@ public class SceneLoader : MonoBehaviour
     public static event System.Action LoadingSucceeded;
     public static event System.Action LoadingCompleted;
 
+    public static Dictionary<string, SceneParams> SceneParams = new Dictionary<string, SceneParams>();
+
     public static bool ShowLoading { get; private set; }
     public static bool IsSceneLoaded { get; private set; }
 
@@ -86,4 +88,23 @@ public class SceneLoader : MonoBehaviour
     {
         instance.StartCoroutine(LoadAddressableSceneCoroutine(key, showLoading, loadSceneAdditively, activateOnLoad));
     }
+
+    static public void LoadBattleScene(SceneParams p)
+    {
+        SceneParams.Add(BATTLE_SCENE, p);
+        SceneLoader.LoadAddressableScene(
+            BATTLE_SCENE
+        );
+    }
+}
+
+public class SceneEnemyInfo
+{
+    public string Name;
+    public int Level;
+}
+
+public class SceneParams
+{
+    public List<SceneEnemyInfo> EnemyList;
 }

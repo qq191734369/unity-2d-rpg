@@ -225,8 +225,8 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Generation\Processors\GeneratorDerivativeUtils.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Nodes\GuidEncoder.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Nodes\Channel\SwizzleNode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Drawing\Inspector\PropertyDrawers\SampleTexture3DNodePropertyDrawer.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Drawing\Controllers\SGController.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Drawing\Inspector\PropertyDrawers\SampleTexture3DNodePropertyDrawer.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Implementation\Edge.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Nodes\NormalMapSpace.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Generation\Targets\Canvas\CanvasStructs.cs" />
@@ -497,8 +497,8 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Interfaces\IMayRequirePosition.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Nodes\Math\Advanced\ReciprocalSquareRootNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Serialization\FakeJsonObject.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Drawing\Controls\ButtonControl.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Nodes\Math\Round\CeilingNode.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Drawing\Controls\ButtonControl.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Util\ValueUtilities.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Nodes\Input\Texture\SampleCubemapNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Generation\Enumerations\ZWrite.cs" />
@@ -535,8 +535,8 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Drawing\Views\IdentifierField.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Graphs\Matrix4ShaderProperty.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Nodes\Input\PBR\DielectricSpecularNode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Graphs\NormalMaterialSlot.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Drawing\Views\ReorderableSlotListView.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Graphs\NormalMaterialSlot.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Generation\Descriptors\SubShaderDescriptor.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Nodes\Utility\DropdownNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Drawing\Inspector\PropertyDrawers\GraphDataPropertyDrawer.cs" />
@@ -654,8 +654,8 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Nodes\Artistic\Normal\NormalUnpackNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Nodes\MeshDeformation\ComputeDeformNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Generation\Enumerations\IncludeLocation.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Nodes\Utility\Logic\NandNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Legacy\VisualEffectMasterNode1.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Nodes\Utility\Logic\NandNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Drawing\Controls\VectorControl.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Attributes\SRPFilterAttribute.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Graphs\ColorMaterialSlot.cs" />

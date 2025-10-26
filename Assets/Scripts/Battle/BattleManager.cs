@@ -38,6 +38,7 @@ public class BattleManager : MonoBehaviour
     public static BattleActionStatus CurrentBattleStatus = BattleActionStatus.SelectAction;
 
     private PartyManager partyManager;
+    private DataManager dataManager;
     private List<CharacterEntity> partyMembers;
     [SerializeField]
     private List<BattleVisual> enemyBattleVisualList = new List<BattleVisual>();
@@ -70,18 +71,36 @@ public class BattleManager : MonoBehaviour
         inited = true;
 
         partyManager = gameManagerObj.GetComponent<PartyManager>();
-
+        dataManager = gameManagerObj.GetComponent<DataManager>();
         partyManager.InitedCallback(InitBattleVisual);
 
+    }
+
+    private void GenerateEnemyEntities()
+    {
+        enemyBattleVisualList.Clear();
+        SceneParams sceneParams = SceneLoader.SceneParams[SceneLoader.BATTLE_SCENE];
+        List<SceneEnemyInfo> sceneEnemyInfos = sceneParams.EnemyList;
+
+        List<CharacterEntity> enemyList = new List<CharacterEntity>();
+        for (int i = 0; i < sceneEnemyInfos.Count; i++)
+        {
+            CharacterEntity enemyEntity = dataManager.GetMonsterInfoByName(sceneEnemyInfos[i].Name);
+            enemyEntity.info.SetLevel(sceneEnemyInfos[i].Level);
+            enemyList.Add(enemyEntity);
+        }
+
+        initEnemyVisual(enemyList);
     }
 
     private void InitBattleVisual(PartyManager p)
     {
         partyMembers = partyManager.AllMembers;
         Debug.Log("partyMembers" + partyMembers.Count);
+
         // 初始化角色视觉元素
         initCharatorVisual();
-        initEnemyVisual();
+        GenerateEnemyEntities();
 
         battleUI = battleUIDocument.GetComponent<BattleUI>().ShowIU(enemyBattleVisualList);
         battleUI.ShowBattlerLabel(charactorBattleVisualList[currentBattleCharacterIndex].info.Name);
@@ -327,11 +346,12 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    private void initEnemyVisual()
+    private void initEnemyVisual(List<CharacterEntity> enemyList)
     {
+        enemies = enemyList;
         GameObject[] enemyVisuals = GameObject.FindGameObjectsWithTag(ENEMY_MEMBER_KEY);
         Debug.Log($"enemey slot length: {enemyVisuals.Length}");
-        for (int i = 0; i < enemies.Count; i++)
+        for (int i = 0; i < enemyList.Count; i++)
         {
             if (enemyVisuals.Length <= i)
             {
@@ -339,7 +359,7 @@ public class BattleManager : MonoBehaviour
                 break;
             }
             GameObject visualSlot = enemyVisuals[i];
-            BattleBasicInfos enemy = enemies[i].info;
+            BattleBasicInfos enemy = enemyList[i].info;
             GameObject instance = Instantiate(enemy.BattlePrefab, visualSlot.transform.position, Quaternion.identity);
             instance.GetComponent<SpriteRenderer>().sortingOrder = 1;
             instance.transform.SetParent(visualSlot.transform);

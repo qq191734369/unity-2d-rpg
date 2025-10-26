@@ -10,10 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2141491492629861272}
   - component: {fileID: 151324902284697295}
-  - component: {fileID: -1934052475212458603}
-  - component: {fileID: 6146026310186603869}
   m_Layer: 0
-  m_Name: Slime-battle
+  m_Name: Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 368543389579951487, guid: d9197b47c643b0242a112ce93583bd45, type: 3}
+  m_Sprite: {fileID: 368543389579951487, guid: 1556531896dcc454c8310e4259eb73ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -89,27 +87,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-1934052475212458603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8997256066204761865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae6e24a9c5dc38a45af2709550bf5ddf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6146026310186603869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8997256066204761865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7534f1aa6ae75234daffbf2664649f73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

@@ -175,6 +175,11 @@ public class ChatDataParser
             ActionWhenChatOver = ParseAction(headRow[8])
         };
 
+        if (chatOption.ActionWhenChatOver == ChatOption.Action.Battle)
+        {
+            chatOption.ChatBattleConfig = GetChatBattleConfigs(headRow);
+        }
+
         // next÷∏’Î
         string nextString = headRow[5];
         if (nextString != null && nextString != "#")
@@ -188,6 +193,26 @@ public class ChatDataParser
         }
 
         return chatOption;
+    }
+
+    static List<ChatBattleConfig> GetChatBattleConfigs(string[] row) {
+        string battleConfigStr = row[9];
+        string[] monsterConfigs = battleConfigStr.Split(';').Where(d => d != null && d != "").ToArray();
+        List<ChatBattleConfig> res = new List<ChatBattleConfig>();
+        for (int i = 0; i < monsterConfigs.Length; i++)
+        {
+            string[] configs = monsterConfigs[i].Split(":");
+            string name = configs[0];
+            int[] levels = configs[1].Split("-").Select(d => int.Parse(d.Trim())).ToArray();
+            ChatBattleConfig chatBattleConfig = new ChatBattleConfig
+            {
+                LevelRange = levels,
+                MosterName = name,
+            };
+            res.Add(chatBattleConfig);
+        }
+
+        return res;
     }
 
     static ChatOption.Action ParseAction(string data)

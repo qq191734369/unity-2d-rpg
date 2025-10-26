@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4612488909024434898}
   - component: {fileID: 1664948361361592221}
   - component: {fileID: 677404327493381035}
+  - component: {fileID: 1040071590169886890}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -113,7 +114,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad1723db5bb75ab4e9750c1a1cc1c53b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textAsset: {fileID: 4900000, guid: 1ff8f33ce08063c4e9f64b32f4b0b64b, type: 3}
+  chatTextAsset: {fileID: 4900000, guid: 1ff8f33ce08063c4e9f64b32f4b0b64b, type: 3}
+  levelExpTextAsset: {fileID: 4900000, guid: cb52eb10f25aa3141b501b312c6f413e, type: 3}
+  MonsterInfoTextAsset: {fileID: 4900000, guid: 0b7374da4a4b65c4caad782af48baf1b, type: 3}
   gameGlobalData:
     PlayerInfo:
       race: 0
@@ -123,6 +126,18 @@ MonoBehaviour:
     - race: 0
       classType: 2
       info: {fileID: 11400000, guid: a26fb24c5eb153048bf39af1b8394e1e, type: 2}
+--- !u!114 &1040071590169886890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2188272183669050599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1366111b62f111243aea76916828b8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5400167727307785305
 GameObject:
   m_ObjectHideFlags: 0

@@ -106,8 +106,8 @@
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Volume\KeyframeUtility.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Debugging\Prefabs\Scripts\DebugUIHandlerRenderingLayerField.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Lighting\ProbeVolume\ProbeVolumePositioning.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Textures\MSAASamples.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Common\ReloadGroupAttribute.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Textures\MSAASamples.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Lighting\ProbeVolume\IProbeVolumeEnabledRenderPipeline.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\RenderGraph\RenderGraphUtilsResources.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Textures\PowerOfTwoTextureAtlas.cs" />
@@ -188,8 +188,8 @@
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\RenderGraph\IRenderGraphEnabledRenderPipeline.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Common\ListBuffer.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\RenderPipeline\RenderPipelineGlobalSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Stripping\IStripper.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Debugging\Prefabs\Scripts\DebugUIHandlerGroup.cs" />
+    <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Stripping\IStripper.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Lighting\ProbeVolume\ProbeVolumeAsset.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Utilities\BitArray.cs" />
     <Compile Include="Library\PackageCache\com.unity.render-pipelines.core@d55f35a46257\Runtime\Common\DynamicResolutionHandler.cs" />

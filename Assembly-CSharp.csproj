@@ -64,6 +64,7 @@
     <Compile Include="Assets\Scripts\Battle\CanBeAttacked.cs" />
     <Compile Include="Assets\Scripts\Player\PartyMemberRender.cs" />
     <Compile Include="Assets\Scripts\Core\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\Core\LevelSystem.cs" />
     <Compile Include="Assets\Scripts\ChatSystem\ChatSystem.cs" />
     <Compile Include="Assets\Scripts\UI\LoadSceneMask.cs" />
     <Compile Include="Assets\Resources\UI\UserActions\ChatUIScript.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Assets\Scripts\UI\MainUI.cs" />
     <Compile Include="Assets\Scripts\Core\PartyManager.cs" />
     <Compile Include="Assets\Scripts\Battle\BattleManager.cs" />
+    <Compile Include="Assets\Scripts\Utils\MonsterInfoParser.cs" />
     <Compile Include="Assets\Scripts\Core\DataManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Core\GameActions.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="Assets\Resources\UI\BattleUI\template\UIEnemyItem.cs" />
     <Compile Include="Assets\Scripts\Core\GameManager.cs" />
     <Compile Include="Assets\Scripts\Core\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Utils\LevelDataParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resources\UI\MainMenu\MainMenu.uxml" />
@@ -1086,13 +1089,13 @@
       <Project>{93B8A0F0-FD5E-7C14-571D-FF862A985E11}</Project>
       <Name>Unity.InputSystem.ForUI</Name>
     </ProjectReference>
-    <ProjectReference Include="UnityEditor.UI.csproj">
-      <Project>{7A89AB2D-A906-B37E-56BA-E036B48102C7}</Project>
-      <Name>UnityEditor.UI</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.Addressables.Editor.csproj">
       <Project>{9804A094-8D34-4B0E-929D-46997939540B}</Project>
       <Name>Unity.Addressables.Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UnityEditor.UI.csproj">
+      <Project>{7A89AB2D-A906-B37E-56BA-E036B48102C7}</Project>
+      <Name>UnityEditor.UI</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.Searcher.Editor.csproj">
       <Project>{DC1031E0-A546-CB6A-3BD2-B79F73FEFE4E}</Project>
@@ -1250,6 +1253,10 @@
       <Project>{16E384D5-91AB-8622-4AC0-2D2B0944FA75}</Project>
       <Name>Unity.RenderPipelines.Universal.Config.Runtime</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.Splines.Editor.csproj">
+      <Project>{B286FB99-8CDE-5439-403F-22E5F13AF3DC}</Project>
+      <Name>Unity.Splines.Editor</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.2D.Aseprite.Common.csproj">
       <Project>{DC3AD885-81AD-C373-C0B8-15B3A4254415}</Project>
       <Name>Unity.2D.Aseprite.Common</Name>
@@ -1262,17 +1269,13 @@
       <Project>{16E41242-0E52-EF8A-553E-61A8B7841B8C}</Project>
       <Name>Unity.2D.Animation.Runtime</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Splines.Editor.csproj">
-      <Project>{B286FB99-8CDE-5439-403F-22E5F13AF3DC}</Project>
-      <Name>Unity.Splines.Editor</Name>
-    </ProjectReference>
     <ProjectReference Include="Unity.Collections.Editor.csproj">
       <Project>{313B8306-1D0F-0AC4-4E82-C86B4F9E49C1}</Project>
       <Name>Unity.Collections.Editor</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.2D.Tilemap.Extras.Editor.csproj">
-      <Project>{DF949039-2F15-14E5-64FF-F5117C0B400D}</Project>
-      <Name>Unity.2D.Tilemap.Extras.Editor</Name>
+    <ProjectReference Include="Unity.Profiling.Core.csproj">
+      <Project>{A93FC159-BF8D-C969-E1BF-85CE217C3941}</Project>
+      <Name>Unity.Profiling.Core</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.csproj">
       <Project>{77DDDB4B-DEBF-7F84-FA19-BA84F3A1029A}</Project>
@@ -1290,9 +1293,9 @@
       <Project>{C9F164B5-54E9-0DE2-E9C5-45DF657269CE}</Project>
       <Name>Unity.Multiplayer.Center.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="Unity.Profiling.Core.csproj">
-      <Project>{A93FC159-BF8D-C969-E1BF-85CE217C3941}</Project>
-      <Name>Unity.Profiling.Core</Name>
+    <ProjectReference Include="Unity.2D.Tilemap.Extras.Editor.csproj">
+      <Project>{DF949039-2F15-14E5-64FF-F5117C0B400D}</Project>
+      <Name>Unity.2D.Tilemap.Extras.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.VisualScripting.Flow.Editor.csproj">
       <Project>{74F9AADE-AF69-D247-28C8-ECFFDED21F23}</Project>

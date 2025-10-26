@@ -18,14 +18,17 @@ public class ChatSystem : MonoBehaviour
     public System.Action OnChatDone;
     public System.Action<CharacterEntity> OnJoinParty;
 
-    public bool IsInConversasion {
-        get {
+    public bool IsInConversasion
+    {
+        get
+        {
             return status == ChatStatus.InProcess || isSleep;
-        } 
+        }
     }
 
     private GameManager gameManager;
     private ChatUIScript chatUIScript;
+    private DataManager dataManager;
 
     private InteractableObject interactableObject;
     private ChatSection currentChatSection;
@@ -37,6 +40,7 @@ public class ChatSystem : MonoBehaviour
     {
         gameManager = GetComponent<GameManager>();
         chatUIScript = gameManager.ChatUIDocument.GetComponent<ChatUIScript>();
+        dataManager = GetComponent<DataManager>();
     }
 
     private void Update()
@@ -49,12 +53,13 @@ public class ChatSystem : MonoBehaviour
         if (
             Input.GetKeyUp(KeyCode.X)
             // 在对话中
-            && status == ChatStatus.InProcess 
+            && status == ChatStatus.InProcess
             // 不在选择动作中
             && !chatUIScript.isSelectingOptions
             // 非睡眠
             && !isSleep
-        ) {
+        )
+        {
             HandleNextChatContent();
         }
     }
@@ -63,7 +68,8 @@ public class ChatSystem : MonoBehaviour
     {
         interactableObject = obj;
         ChatSection section = obj.chatSection;
-        if (!section.isEmpty()) {
+        if (!section.isEmpty())
+        {
             // 开始对话
             status = ChatStatus.InProcess;
             currentChatSection = section;
@@ -108,11 +114,13 @@ public class ChatSystem : MonoBehaviour
     }
 
     // 按键后，展示下一个对话内容
-    private async void HandleNextChatContent() {
+    private async void HandleNextChatContent()
+    {
         List<ChatContent> contents = currentChatSection.Contents;
         int nextContentIndex = contentIndex + 1;
         // 对话内容未播完 继续下一段内容
-        if (nextContentIndex < contents.Count) {
+        if (nextContentIndex < contents.Count)
+        {
             contentIndex++;
             ShowCurrentContent();
         }
@@ -121,7 +129,8 @@ public class ChatSystem : MonoBehaviour
             // 对话内容结束, 决定后续动作
             // 1. 是否有Option选项 展示Options
             List<ChatOption> chatOptions = currentChatSection.ChatOptions;
-            if (chatOptions != null && chatOptions.Count > 0) {
+            if (chatOptions != null && chatOptions.Count > 0)
+            {
                 // 短暂停止响应交互
                 await WaitForSeconds();
 
@@ -131,7 +140,8 @@ public class ChatSystem : MonoBehaviour
             }
             // 2. 是否有Next
             ChatSection next = currentChatSection.Next;
-            if (next != null) {
+            if (next != null)
+            {
                 currentChatSection = next;
                 // 展示对话内容
                 ShowCurrentSection();
@@ -150,15 +160,43 @@ public class ChatSystem : MonoBehaviour
         OnChatDone?.Invoke();
     }
 
+    private void ProcessBattle(ChatOption op)
+    {
+        List<ChatBattleConfig> chatBattleConfig = op.ChatBattleConfig;
+        if (chatBattleConfig == null)
+        {
+            Debug.Log("No Battle params found");
+            return;
+        }
+
+        SceneParams sceneParams = new SceneParams();
+        sceneParams.EnemyList = new List<SceneEnemyInfo>();
+
+        for (int i = 0; i < chatBattleConfig.Count; i++)
+        {
+            string name = chatBattleConfig[i].MosterName;
+            int[] levelRange = chatBattleConfig[i].LevelRange;
+            int level = levelRange[Random.Range(0, levelRange.Length)];
+            sceneParams.EnemyList.Add(new SceneEnemyInfo
+            {
+                Name = name,
+                Level = level,
+            });
+        }
+
+        SceneLoader.LoadBattleScene(sceneParams);
+    }
+
     private void HandleOptionConfirm(ChatOption op)
     {
         chatUIScript.OnConfirm -= HandleOptionConfirm;
         ChatOption.Action action = op.ActionWhenChatOver;
 
-        switch (action) {
+        switch (action)
+        {
             case ChatOption.Action.Battle:
                 Debug.Log("Start Battle");
-                SceneLoader.LoadAddressableScene(SceneLoader.BATTLE_SCENE);
+                ProcessBattle(op);
                 break;
             case ChatOption.Action.Join:
                 Debug.Log("Join party");
@@ -173,12 +211,13 @@ public class ChatSystem : MonoBehaviour
             default:
                 break;
         }
-        
+
 
         if (op.Next == null || op.Next.isEmpty())
         {
             EmitChatDone();
-        } else
+        }
+        else
         {
             currentChatSection = op.Next;
             ShowCurrentSection();
@@ -195,7 +234,7 @@ public class ChatContent
 [System.Serializable]
 public class ChatBattleConfig
 {
-    public string[] MosterNames;
+    public string MosterName;
     public int[] LevelRange;
 }
 
@@ -231,7 +270,7 @@ public class ChatOption
     // 选择后动作
     public Action ActionWhenChatOver = Action.None;
 
-    public ChatBattleConfig ChatBattleConfig;
+    public List<ChatBattleConfig> ChatBattleConfig;
 
     public ChatLoveConfig LoveConfig;
 

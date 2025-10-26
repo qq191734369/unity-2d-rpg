@@ -6574,7 +6574,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1858729913464498453, guid: ea9eac93aaa472c458a60d3b512f9822, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 368543389579951487, guid: 1556531896dcc454c8310e4259eb73ad, type: 3}
+    - target: {fileID: 1858729913464498453, guid: ea9eac93aaa472c458a60d3b512f9822, type: 3}
       propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858729913464498453, guid: ea9eac93aaa472c458a60d3b512f9822, type: 3}
+      propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5199363341516034211, guid: ea9eac93aaa472c458a60d3b512f9822, type: 3}
