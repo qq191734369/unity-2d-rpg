@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: -420179789
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 368543389579951487, guid: d9197b47c643b0242a112ce93583bd45, type: 3}
+  m_Sprite: {fileID: 368543389579951487, guid: 1556531896dcc454c8310e4259eb73ad, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -112,7 +112,17 @@ MonoBehaviour:
   CharacterInfo:
     race: 0
     classType: 0
-    info: {fileID: 0}
+    info:
+      Level: 0
+      Name: 
+      Description: 
+      MaxHealth: 0
+      CurrentHealth: 0
+      Speed: 0
+      Attack: 0
+      Defense: 0
+      OverWorldPrefab: {fileID: 0}
+      BattlePrefab: {fileID: 0}
 --- !u!50 &6299358042710951877
 Rigidbody2D:
   serializedVersion: 5
@@ -174,15 +184,15 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0060701966, y: -0.0121405125}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1.1875}
+    oldSize: {x: 1, y: 0.59375}
     newSize: {x: 1, y: 0.59375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 1.1875}
+  m_Size: {x: 1.0813657, y: 0.75853395}
   m_EdgeRadius: 0

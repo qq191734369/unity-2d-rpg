@@ -22,10 +22,15 @@ public class SceneLoader : MonoBehaviour
     public static event System.Action LoadingSucceeded;
     public static event System.Action LoadingCompleted;
 
+    public static event System.Action<float> IsUnloading;
+    public static event System.Action UnloadCompleted;
+
     public static Dictionary<string, SceneParams> SceneParams = new Dictionary<string, SceneParams>();
 
     public static bool ShowLoading { get; private set; }
     public static bool IsSceneLoaded { get; private set; }
+
+    public static SceneInstance BattleSceneInstance;
 
     void Awake()
     {
@@ -66,6 +71,10 @@ public class SceneLoader : MonoBehaviour
         Debug.Log("LoadingSucceeded");
 
         loadedInstance = asyncLoadHandler.Result;
+        if ((string)key == BATTLE_SCENE)
+        {
+            BattleSceneInstance = loadedInstance;
+        }
     }
 
     public static void ActivateLoadedScene()
@@ -91,10 +100,37 @@ public class SceneLoader : MonoBehaviour
 
     static public void LoadBattleScene(SceneParams p)
     {
-        SceneParams.Add(BATTLE_SCENE, p);
+        if (SceneParams.ContainsKey(BATTLE_SCENE)){
+            SceneParams.Remove(BATTLE_SCENE);
+            SceneParams.Add(BATTLE_SCENE, p);
+        } else
+        {
+            SceneParams.Add(BATTLE_SCENE, p);
+        }
+
         SceneLoader.LoadAddressableScene(
             BATTLE_SCENE
+            //false,
+            //true,
+            //true
         );
+    }
+
+    static private void UnloadAddressableSceneCorotine(SceneInstance sceneInstance, UnloadSceneOptions unloadSceneOptions)
+    {
+        var handler = Addressables.UnloadSceneAsync(BattleSceneInstance, UnloadSceneOptions.None);
+        while (handler.Status != AsyncOperationStatus.Succeeded)
+        {
+            IsUnloading.Invoke(handler.PercentComplete);
+        }
+
+        UnloadCompleted?.Invoke();
+    }
+
+    static public void UnloadBattleScene()
+    {
+        SceneParams.Remove(BATTLE_SCENE);
+        UnloadAddressableSceneCorotine(BattleSceneInstance, UnloadSceneOptions.None);
     }
 }
 

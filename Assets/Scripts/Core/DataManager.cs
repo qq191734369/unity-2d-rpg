@@ -41,6 +41,22 @@ public class DataManager : MonoBehaviour
     public CharacterEntity GetMonsterInfoByName(string name) {
         return gameGlobalData.MonsterInfoMap[name]?.DeepCopy();
     }
+
+    public void AddPartyMember(string name)
+    {
+        if (gameGlobalData.PartyMemberNameList.Contains(name)) {
+            return;
+        }
+
+        gameGlobalData.PartyMemberNameList.Add(name);
+    }
+
+    public void RemovePartyMember(string name) {
+        if (gameGlobalData.PartyMemberNameList.Contains(name))
+        {
+            gameGlobalData.PartyMemberNameList.Remove(name);
+        }
+    }
 }
 
 [System.Serializable]
@@ -70,11 +86,28 @@ public class CharacterEntity
     public Race race;
     public ClassType classType;
     public BattleBasicInfos info;
+    public Vector3 Position;
+    public string Scene;
+
+    public CharacterEntity() { }
+
+    public CharacterEntity(CharacterEntity other)
+    {
+        if (other == null)
+        {
+            return;
+        }
+
+        race = other.race;
+        classType = other.classType;
+        info = new BattleBasicInfos(other.info);
+        Position = new Vector3(other.Position.x, other.Position.y, other.Position.z);
+        Scene = other.Scene;
+    }
 
     public CharacterEntity DeepCopy()
     {
-        string json = JsonUtility.ToJson(this);
-        return JsonUtility.FromJson<CharacterEntity>(json);
+        return new CharacterEntity(this);
     }
 }
 
@@ -87,6 +120,8 @@ public class GameGlobalData
     public CharacterEntity PlayerInfo;
     // 角色信息
     public List<CharacterEntity> CharacterEntities;
+    // 队伍列表、为了保证游戏内引用的对象都为globalData便于管理、这里只存名字，在partyManager中进行构建
+    public List<string> PartyMemberNameList;
     // 等级-经验表格
     public Dictionary<int, int> LevelExpMap;
     // 怪物信息表

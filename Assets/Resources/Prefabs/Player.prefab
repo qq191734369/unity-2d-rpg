@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 7326244084923512981}
   - component: {fileID: 3027485360136535701}
   - component: {fileID: 4004376678400985852}
+  - component: {fileID: 6172210169137889096}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -105,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3305da1a8a3f2dd4783a030fcaa0df9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 1.5
+  detectionRadius: 0.8
   interactableLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -226,15 +227,43 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.010092303, y: -0.010092318}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.9375, y: 1.890625}
+    oldSize: {x: 0.46875, y: 0.9453125}
     newSize: {x: 20.48, y: 20.48}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.9375, y: 1.890625}
+  m_Size: {x: 0.6952853, y: 1.0731503}
   m_EdgeRadius: 0
+--- !u!114 &6172210169137889096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928365100555124334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a741e4231993090479d6fbf4ed1be0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterInfo:
+    race: 0
+    classType: 0
+    info:
+      Level: 0
+      Name: 
+      Description: 
+      MaxHealth: 0
+      CurrentHealth: 0
+      Speed: 0
+      Attack: 0
+      Defense: 0
+      OverWorldPrefab: {fileID: 0}
+      BattlePrefab: {fileID: 0}
+    Position: {x: 0, y: 0, z: 0}
+    Scene: 

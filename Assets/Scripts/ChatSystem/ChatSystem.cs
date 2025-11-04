@@ -184,6 +184,7 @@ public class ChatSystem : MonoBehaviour
             });
         }
 
+        GameManager.SavePosiiton();
         SceneLoader.LoadBattleScene(sceneParams);
     }
 

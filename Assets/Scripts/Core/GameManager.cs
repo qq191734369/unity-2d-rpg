@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 // 定义带返回值的回调类型
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] public UIDocument ChatUIDocument;
 
     const string GAME_MANAGER_KEY = "GameManager";
+    const string PLAYER_TAG = "Player";
 
     public static System.Action Ready;
 
@@ -56,5 +58,25 @@ public class GameManager : MonoBehaviour
         {
             GameManager.Ready += () => callback(GameManager.Instance);
         }
+    }
+
+    public static void SavePosiiton()
+    {
+        PartyManager partyManager = Instance.GetComponent<PartyManager>();
+        DataManager dataManager = Instance.GetComponent<DataManager>();
+        GameObject player = GameObject.FindGameObjectWithTag(PLAYER_TAG);
+        PartyMemberRender partyMemberRender = player.GetComponent<PartyMemberRender>();
+        Scene scene = SceneManager.GetActiveScene();
+
+        CharacterEntity playerInfo = dataManager.gameGlobalData.PlayerInfo;
+        playerInfo.Scene = scene.name;
+        playerInfo.Position = player.transform.position;
+
+        partyMemberRender.MemberVisualList.ForEach(d =>
+        {
+            CharacterEntity characterInfo = d.GetComponent<CharactorInfo>().CharacterInfo;
+            characterInfo.Scene = scene.name;
+            characterInfo.Position = d.transform.position;
+        });
     }
 }

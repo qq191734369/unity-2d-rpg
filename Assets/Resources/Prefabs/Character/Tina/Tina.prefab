@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5057546397679366840}
   - component: {fileID: 4607803302092314050}
   - component: {fileID: 2345569849663871755}
+  - component: {fileID: 4612933171852973615}
   m_Layer: 7
   m_Name: Tina
   m_TagString: Untagged
@@ -152,17 +153,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.0054545403, y: 0.0027273}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.953125, y: 1.890625}
+    oldSize: {x: 0.4765625, y: 0.9453125}
     newSize: {x: 1, y: 0.59375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 1.1875}
+  m_Size: {x: 0.58181095, y: 1.0511355}
   m_EdgeRadius: 0
 --- !u!114 &4607803302092314050
 MonoBehaviour:
@@ -186,7 +187,19 @@ MonoBehaviour:
   CharacterInfo:
     race: 0
     classType: 0
-    info: {fileID: 0}
+    info:
+      Level: 0
+      Name: 
+      Description: 
+      MaxHealth: 0
+      CurrentHealth: 0
+      Speed: 0
+      Attack: 0
+      Defense: 0
+      OverWorldPrefab: {fileID: 0}
+      BattlePrefab: {fileID: 0}
+    Position: {x: 0, y: 0, z: 0}
+    Scene: 
 --- !u!114 &2345569849663871755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,5 +212,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c60e64cb84edb244b0d28e203e09fac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7
   followTarget: {fileID: 0}
+--- !u!114 &4612933171852973615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7383701126876434704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a741e4231993090479d6fbf4ed1be0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterInfo:
+    race: 0
+    classType: 0
+    info:
+      Level: 0
+      Name: 
+      Description: 
+      MaxHealth: 0
+      CurrentHealth: 0
+      Speed: 0
+      Attack: 0
+      Defense: 0
+      OverWorldPrefab: {fileID: 0}
+      BattlePrefab: {fileID: 0}
+    Position: {x: 0, y: 0, z: 0}
+    Scene: 

@@ -1,0 +1,11 @@
+.bg {
+    background-color: rgb(255, 255, 255);
+    width: 100px;
+    height: 10px;
+    flex-shrink: 0;
+    display: flex;
+}
+
+.currentHealth {
+    background-color: rgb(51, 195, 55);
+}

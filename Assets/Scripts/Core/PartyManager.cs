@@ -52,6 +52,16 @@ public class PartyManager : MonoBehaviour
 
     private void init(GameObject gameManagerObj) {
         dataManager = gameManagerObj.GetComponent<DataManager>();
+        // 根据全局队伍列表数据 构建队伍列表
+        List<string> memberNames = dataManager.gameGlobalData.PartyMemberNameList;
+        PartyList.Clear();
+        foreach (string memberName in memberNames) {
+            CharacterEntity entity = dataManager.GetCharacterByName(memberName);
+            if (entity != null) {
+                PartyList.Add(entity);
+                Debug.Log($"PartyManager list init {entity.info.Name}");
+            }
+        }
 
         OnPartyManagerInited?.Invoke();
     }
@@ -66,6 +76,8 @@ public class PartyManager : MonoBehaviour
             return;
         }
         PartyList.Add(characterEntity);
+        dataManager.AddPartyMember(characterEntity.info.Name);
+
         OnJoinedParty?.Invoke(characterEntity);
         OnPartyMemberChange?.Invoke();
     }
@@ -75,6 +87,7 @@ public class PartyManager : MonoBehaviour
         if (HasJoinedParty(characterEntity))
         {
             PartyList.Remove(characterEntity);
+            dataManager.RemovePartyMember(characterEntity.info.Name);
             OnLeftParty?.Invoke(characterEntity);
             OnPartyMemberChange?.Invoke();
         }

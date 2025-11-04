@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text.RegularExpressions;
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UIElements;
 
 public class BattleManager : MonoBehaviour
@@ -225,6 +226,7 @@ public class BattleManager : MonoBehaviour
 
     private void BackToWorldMap() {
         SceneLoader.LoadAddressableScene(isDebug ? SceneLoader.DEBUG_SCENE : SceneLoader.WORLD_MAP);
+        //SceneLoader.UnloadBattleScene();
     }
 
     private IEnumerator StartRunCorotine(BattleVisual current)
@@ -266,6 +268,10 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator StartAttackCorotine(BattleVisual current)
     {
+        if (current.instance?.gameObject == null)
+        {
+            yield break;
+        }
         CurrentBattleStatus = BattleManager.BattleActionStatus.InBattle;
 
         if (current.AttackTarget.info.IsDead)
@@ -335,8 +341,10 @@ public class BattleManager : MonoBehaviour
             GameObject visualSlot = partyVisuals[i];
             BattleBasicInfos character = partyMembers[i].info;
             GameObject instance = Instantiate(character.BattlePrefab, visualSlot.transform.position, Quaternion.identity);
+            instance.GetComponent<SpriteRenderer>().sortingLayerName = "BattleScene";
             instance.GetComponent<SpriteRenderer>().sortingOrder = 1;
             instance.transform.SetParent(visualSlot.transform);
+            instance.GetComponent<CanBeAttacked>()?.SetBasicInfo(character);
             charactorBattleVisualList.Add(new BattleVisual
             {
                 battlerType = BattleVisual.BattlerType.Character,
@@ -361,8 +369,10 @@ public class BattleManager : MonoBehaviour
             GameObject visualSlot = enemyVisuals[i];
             BattleBasicInfos enemy = enemyList[i].info;
             GameObject instance = Instantiate(enemy.BattlePrefab, visualSlot.transform.position, Quaternion.identity);
+            instance.GetComponent<SpriteRenderer>().sortingLayerName = "BattleScene";
             instance.GetComponent<SpriteRenderer>().sortingOrder = 1;
             instance.transform.SetParent(visualSlot.transform);
+            instance.GetComponent<CanBeAttacked>()?.SetBasicInfo(enemy);
             enemyBattleVisualList.Add(new BattleVisual
             {
                 battlerType = BattleVisual.BattlerType.Enemy,

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CanAttack : MonoBehaviour
@@ -14,13 +15,16 @@ public class CanAttack : MonoBehaviour
 
         // 播放攻击动画
         PlayAttackAnimation();
-        // 播放受击动画
-        target.instance.GetComponent<CanBeAttacked>()?.PlayBeAttackedAnimation();
+       
         // 计算属性
-        BattleBasicInfos targetInfo = target.info as BattleBasicInfos;
-        BattleBasicInfos currentInfo = current.info as BattleBasicInfos;
+        BattleBasicInfos targetInfo = target.info;
+        BattleBasicInfos currentInfo = current.info;
 
         targetInfo.CurrentHealth -= currentInfo.Attack;
+        Debug.Log($"currenthealth {targetInfo.CurrentHealth}, max health {targetInfo.MaxHealth}");
+        // 播放受击动画
+        target.instance.GetComponent<CanBeAttacked>()?.PlayBeAttackedAnimation();
+        target.instance.GetComponent<CanBeAttacked>()?.UpdateHealthBar(targetInfo.CurrentHealth, targetInfo.MaxHealth);
 
         return new AttackInfo
         {

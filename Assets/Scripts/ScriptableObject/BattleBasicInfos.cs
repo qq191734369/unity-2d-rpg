@@ -1,7 +1,9 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BattleBasicInfos", menuName = "Scriptable Objects/BattleBasicInfos")]
-public class BattleBasicInfos : ScriptableObject
+//[CreateAssetMenu(fileName = "BattleBasicInfos", menuName = "Scriptable Objects/BattleBasicInfos")]
+
+[System.Serializable]
+public class BattleBasicInfos
 {
     public int Level;
     public string Name;
@@ -15,6 +17,23 @@ public class BattleBasicInfos : ScriptableObject
     public GameObject BattlePrefab;
 
     public InfoGrowth InfoGrowth;
+
+    public BattleBasicInfos() { }
+
+    public BattleBasicInfos(BattleBasicInfos other)
+    {
+        this.Level = other.Level;
+        this.Name = other.Name;
+        this.Description = other.Description;
+        this.MaxHealth = other.MaxHealth;
+        this.CurrentHealth = other.CurrentHealth;
+        this.Speed = other.Speed;
+        this.Attack = other.Attack;
+        this.Defense = other.Defense;
+        this.OverWorldPrefab = other.OverWorldPrefab;
+        this.BattlePrefab = other.BattlePrefab;
+        this.InfoGrowth = new InfoGrowth(other.InfoGrowth);
+    }
 
     public bool IsDead
     {
@@ -45,5 +64,14 @@ public class InfoGrowth
     public int Speed;
     public int Attack;
     public int Defense;
+
+    public InfoGrowth() { }
+
+    public InfoGrowth(InfoGrowth other) {
+        Health = other.Health;
+        Speed = other.Speed;
+        Attack = other.Attack;
+        Defense = other.Defense;
+    }
 }
 

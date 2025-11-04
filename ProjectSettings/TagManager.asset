@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - GameManager
+  - Enemy
+  - PartyMember
   layers:
   - Default
   - TransparentFX
@@ -50,6 +52,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1306650923
+    locked: 0
+  - name: BattleScene
+    uniqueID: 762398625
     locked: 0
   m_RenderingLayers:
   - Default

@@ -7,8 +7,9 @@ public class PartyMemberRender : MonoBehaviour
     private const int PARTY_MEMBER_LAYER = 8;
 
     private PartyManager partyManager;
+    private DataManager dataManager;
 
-    private List<GameObject> memberVisualList = new List<GameObject>();
+    public List<GameObject> MemberVisualList = new List<GameObject>();
 
     private void Awake()
     {
@@ -18,34 +19,54 @@ public class PartyMemberRender : MonoBehaviour
     private void init(GameObject gameManagerObj)
     {
         partyManager = gameManagerObj.GetComponent<PartyManager>();
+        dataManager = gameManagerObj.GetComponent<DataManager>();
 
+        // 设置玩家位置
+        gameObject.transform.position = dataManager.gameGlobalData.PlayerInfo.Position;
+
+        partyManager.InitedCallback(handlePartyInited);
+    }
+
+    private void handlePartyInited(PartyManager p)
+    {
         FreshPartyVisualList();
         partyManager.OnPartyMemberChange += FreshPartyVisualList;
     }
 
     private void FreshPartyVisualList()
     {
-        if (memberVisualList.Count > 0)
+        if (MemberVisualList.Count > 0)
         {
-            foreach (var item in memberVisualList)
+            foreach (var item in MemberVisualList)
             {
                 Destroy(item);
             }
-            memberVisualList.Clear();
+            MemberVisualList.Clear();
         }
 
         List<CharacterEntity> characterEntities = partyManager.PartyList;
         for (int i = 0; i < characterEntities.Count; i++) {
+            CharacterEntity currentEntity = characterEntities[i];
             Vector3 positionToSpawn = transform.position;
             positionToSpawn.x += 2;
-            GameObject tempOverworldMember = Instantiate(characterEntities[i].info.OverWorldPrefab, positionToSpawn, Quaternion.identity);
+            // 实例化游戏对象
+            GameObject tempOverworldMember = Instantiate(currentEntity.info.OverWorldPrefab, positionToSpawn, Quaternion.identity);
             MemberFollowAI memberFollowAI = tempOverworldMember.GetComponent<MemberFollowAI>();
             memberFollowAI.enabled = true;
-            memberFollowAI.SetFollowDistance(2*(i + 1));
+            memberFollowAI.SetFollowDistance((i + 1));
             tempOverworldMember.layer = PARTY_MEMBER_LAYER;
             tempOverworldMember.SetActive(true);
             tempOverworldMember.GetComponent<Collider2D>().isTrigger = true;
-            memberVisualList.Add(tempOverworldMember);
+            // 设置基本信息
+            tempOverworldMember.GetComponent<CharactorInfo>().CharacterInfo = currentEntity;
+
+            // 读取保存的位置信息
+            if (characterEntities[i].Position != null)
+            {
+                tempOverworldMember.transform.position = currentEntity.Position;
+            }
+
+            MemberVisualList.Add(tempOverworldMember);
             Debug.Log($"FreshPartyVisualList, current member {characterEntities[i].info.Name}");
         }
     }
