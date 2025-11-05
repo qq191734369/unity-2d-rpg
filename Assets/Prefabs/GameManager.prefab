@@ -38,6 +38,7 @@ Transform:
   m_Children:
   - {fileID: 7986140250992255559}
   - {fileID: 4795525759576648100}
+  - {fileID: 808862340405818633}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4546110013469844617
@@ -77,6 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35db9b68764ef3a46bda467290c709c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiDocument: {fileID: 6320897539601701446}
 --- !u!114 &4612488909024434898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,12 +119,15 @@ MonoBehaviour:
   chatTextAsset: {fileID: 4900000, guid: 1ff8f33ce08063c4e9f64b32f4b0b64b, type: 3}
   levelExpTextAsset: {fileID: 4900000, guid: cb52eb10f25aa3141b501b312c6f413e, type: 3}
   MonsterInfoTextAsset: {fileID: 4900000, guid: 0b7374da4a4b65c4caad782af48baf1b, type: 3}
+  CharacterTextAsset: {fileID: 4900000, guid: 262c02d5114dbba4a8a0c8e4d2306a4a, type: 3}
   gameGlobalData:
     PlayerInfo:
+      IsPlayer: 0
       race: 0
       classType: 1
       info:
         Level: 10
+        CurrentExp: 0
         Name: Laya
         Description: 
         MaxHealth: 500
@@ -132,20 +137,9 @@ MonoBehaviour:
         Defense: 10
         OverWorldPrefab: {fileID: 0}
         BattlePrefab: {fileID: 132648164539383978, guid: 0d2a8f61e72b87548af707405ad7a78a, type: 3}
-    CharacterEntities:
-    - race: 0
-      classType: 2
-      info:
-        Level: 10
-        Name: Tina
-        Description: 
-        MaxHealth: 600
-        CurrentHealth: 600
-        Speed: 11
-        Attack: 12
-        Defense: 12
-        OverWorldPrefab: {fileID: 7383701126876434704, guid: 8807f2abb08e613429c9d31676434b4e, type: 3}
-        BattlePrefab: {fileID: 132648164539383978, guid: 629594ff781c077479935cf6082e840b, type: 3}
+      Position: {x: 0, y: 0, z: 0}
+      Scene: 
+    PartyMemberNameList: []
 --- !u!114 &1040071590169886890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +282,89 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isActive: 0
   isSelectingOptions: 0
+--- !u!1 &6400134153261895134
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7940963805238874095}
+  - component: {fileID: 6320897539601701446}
+  m_Layer: 5
+  m_Name: UIDocument
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7940963805238874095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6400134153261895134}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 808862340405818633}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6320897539601701446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6400134153261895134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: d6a6d7fbfb527a84bae3fa263288d6f0, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 201e6465b4d59b0428a70323b21b66b0, type: 3}
+  m_SortingOrder: 1000
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+--- !u!1 &6873724394643501130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 808862340405818633}
+  m_Layer: 0
+  m_Name: Menu
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &808862340405818633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6873724394643501130}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7940963805238874095}
+  m_Father: {fileID: 2801660778360002689}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7147291189134855107
 GameObject:
   m_ObjectHideFlags: 0

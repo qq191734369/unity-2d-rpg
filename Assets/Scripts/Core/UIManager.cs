@@ -1,30 +1,23 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEngine.AddressableAssets;
 
 public class UIManager : MonoBehaviour
 {
-    private UIDocument uiDocument;
+    [SerializeField]
+    public UIDocument uiDocument;
     private Button exitGameBtn;
-    private GameObject ugameObject;
+    private GameManager gameManager;
+    private PartyManager partyManager;
 
     private void Awake()
     {
-        CreateGameMenuDocument();
+        GameManager.OnGameInited(InitPage);
     }
 
-    void CreateGameMenuDocument()
+    void InitPage(GameObject gameManagerObj)
     {
-        // 创建GameObject并添加UIDocument组件
-        ugameObject = new GameObject();
-        ugameObject.name = "Game Menu";
-        ugameObject.transform.parent = this.transform;
-        uiDocument = ugameObject.AddComponent<UIDocument>();
-
-        // 设置UI Document的配置
-        uiDocument.visualTreeAsset = Resources.Load<VisualTreeAsset>("UI/MainMenu/MainMenu");
-        uiDocument.panelSettings = Resources.Load<PanelSettings>("Settings/UI Toolkit/PanelSettings");
-        uiDocument.sortingOrder = 1000;
+        gameManager = gameManagerObj.GetComponent<GameManager>();
+        partyManager = gameManagerObj.GetComponent<PartyManager>();
 
         exitGameBtn = uiDocument.rootVisualElement.Q<Button>("ExitButton");
         exitGameBtn.clicked += ExitGame;
@@ -50,9 +43,28 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape)) {
-            uiDocument.rootVisualElement.style.display = uiDocument.rootVisualElement.style.display == DisplayStyle.None ? DisplayStyle.Flex : DisplayStyle.None;
-            Debug.Log("click esc");
+        if (Input.GetKeyUp(KeyCode.C)) {
+            CreateCharacterListUI();
+        }
+    }
+
+    private void CreateCharacterListUI()
+    {
+        uiDocument.rootVisualElement.style.display = uiDocument.rootVisualElement.style.display == DisplayStyle.None ? DisplayStyle.Flex : DisplayStyle.None;
+        VisualElement pannel = uiDocument.rootVisualElement.Q<VisualElement>("CharacterPannel");
+        if (pannel == null) {
+            return;
+        }
+
+        var allPartyMembers = partyManager.AllMembers;
+        if (allPartyMembers == null) {
+            return;
+        }
+
+        pannel.Clear();
+        foreach (var member in allPartyMembers) {
+            var characterCard = new CharacterCard(member);
+            pannel.Add(characterCard);
         }
     }
 }

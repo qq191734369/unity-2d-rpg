@@ -1,0 +1,3 @@
+﻿id,name,exp,base_health,base_defense,base_attack,base_speed,health_growth,defense_growth,attack_growth,speed_growth,battle_prefeb,desc,class,is_player,race
+Laya,Laya,,200,14,16,10,16,7,8,0,Laya,一位冒险者,Hunter,Y,Human
+Tina,Tina,,200,20,19,12,20,9,9,0,Tina,一位战士,Warrior,,Human

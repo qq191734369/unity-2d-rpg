@@ -5,7 +5,10 @@ using UnityEngine;
 [System.Serializable]
 public class BattleBasicInfos
 {
+    public static int MAX_LEVEL = 100;
+
     public int Level;
+    public int CurrentExp;
     public string Name;
     public string Description;
     public int MaxHealth;
@@ -22,17 +25,18 @@ public class BattleBasicInfos
 
     public BattleBasicInfos(BattleBasicInfos other)
     {
-        this.Level = other.Level;
-        this.Name = other.Name;
-        this.Description = other.Description;
-        this.MaxHealth = other.MaxHealth;
-        this.CurrentHealth = other.CurrentHealth;
-        this.Speed = other.Speed;
-        this.Attack = other.Attack;
-        this.Defense = other.Defense;
-        this.OverWorldPrefab = other.OverWorldPrefab;
-        this.BattlePrefab = other.BattlePrefab;
-        this.InfoGrowth = new InfoGrowth(other.InfoGrowth);
+        Level = other.Level;
+        CurrentExp = other.CurrentExp;
+        Name = other.Name;
+        Description = other.Description;
+        MaxHealth = other.MaxHealth;
+        CurrentHealth = other.CurrentHealth;
+        Speed = other.Speed;
+        Attack = other.Attack;
+        Defense = other.Defense;
+        OverWorldPrefab = other.OverWorldPrefab;
+        BattlePrefab = other.BattlePrefab;
+        InfoGrowth = new InfoGrowth(other.InfoGrowth);
     }
 
     public bool IsDead
@@ -49,10 +53,34 @@ public class BattleBasicInfos
             return this;
         }
 
+        ComputeStatus(deltaLevel);
+
+        return this;
+    }
+
+    private void ComputeStatus(int deltaLevel)
+    {
         MaxHealth = InfoGrowth.Health * deltaLevel + MaxHealth;
         CurrentHealth = MaxHealth;
         Attack = InfoGrowth.Attack * deltaLevel + Attack;
         Defense = InfoGrowth.Defense * deltaLevel + Defense;
+    }
+
+    public BattleBasicInfos AddLevel(int levelGrowth)
+    {
+        if (levelGrowth <=0)
+        {
+            return this;
+        }
+
+        int targetLevel = Level + levelGrowth;
+        if (targetLevel > BattleBasicInfos.MAX_LEVEL)
+        {
+            targetLevel = BattleBasicInfos.MAX_LEVEL;
+        }
+
+        int deltaLevel = targetLevel - Level;
+        ComputeStatus(deltaLevel);
 
         return this;
     }

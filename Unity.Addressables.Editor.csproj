@@ -132,8 +132,8 @@
     <Compile Include="Library\PackageCache\com.unity.addressables@38fa2290d5f2\Editor\Settings\GroupSchemas\PlayerDataGroupSchema.cs" />
     <Compile Include="Library\PackageCache\com.unity.addressables@38fa2290d5f2\Editor\BuildReportVisualizer\Utility\SummaryRowBuilder.cs" />
     <Compile Include="Library\PackageCache\com.unity.addressables@38fa2290d5f2\Editor\Settings\BinaryCatalogInitializationSettings.cs" />
-    <Compile Include="Library\PackageCache\com.unity.addressables@38fa2290d5f2\Editor\Build\BuildPipelineTasks\ExtractDataTask.cs" />
     <Compile Include="Library\PackageCache\com.unity.addressables@38fa2290d5f2\Editor\GUI\AddressableAssetGroupTemplateInspector.cs" />
+    <Compile Include="Library\PackageCache\com.unity.addressables@38fa2290d5f2\Editor\Build\BuildPipelineTasks\ExtractDataTask.cs" />
     <Compile Include="Library\PackageCache\com.unity.addressables@38fa2290d5f2\Editor\BuildReportVisualizer\ContentView\AssetsContentView.cs" />
     <Compile Include="Library\PackageCache\com.unity.addressables@38fa2290d5f2\Editor\GUI\AddressableAssetsSettingsGroupEditor.cs" />
     <Compile Include="Library\PackageCache\com.unity.addressables@38fa2290d5f2\Editor\Settings\GroupSchemas\ContentUpdateGroupSchema.cs" />

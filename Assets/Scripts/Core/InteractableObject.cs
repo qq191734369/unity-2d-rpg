@@ -26,9 +26,16 @@ public class InteractableObject : MonoBehaviour
     {
         dataManager = gameManagerObj.GetComponent<DataManager>();
         partyManager = gameManagerObj.GetComponent<PartyManager>();
+        InitCharacterInfo();
+    }
 
+    private void InitCharacterInfo()
+    {
         CharacterInfo = dataManager.GetCharacterByName(Name);
-
+        if (CharacterInfo == null)
+        {
+            return;
+        }
         if (partyManager.HasJoinedParty(CharacterInfo))
         {
             gameObject.SetActive(false);

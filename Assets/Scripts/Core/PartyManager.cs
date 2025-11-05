@@ -53,15 +53,9 @@ public class PartyManager : MonoBehaviour
     private void init(GameObject gameManagerObj) {
         dataManager = gameManagerObj.GetComponent<DataManager>();
         // 根据全局队伍列表数据 构建队伍列表
-        List<string> memberNames = dataManager.gameGlobalData.PartyMemberNameList;
+        List<CharacterEntity> members = dataManager.GetPartyMemberEntityList();
         PartyList.Clear();
-        foreach (string memberName in memberNames) {
-            CharacterEntity entity = dataManager.GetCharacterByName(memberName);
-            if (entity != null) {
-                PartyList.Add(entity);
-                Debug.Log($"PartyManager list init {entity.info.Name}");
-            }
-        }
+        PartyList.AddRange(members);
 
         OnPartyManagerInited?.Invoke();
     }

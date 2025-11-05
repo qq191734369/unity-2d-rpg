@@ -1,10 +1,14 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Resources/UI/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=faaa61ffc80cd7c469cbc86a90a67d33&amp;type=3#MainMenu" />
-    <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; justify-content: center; display: none;">
-        <ui:VisualElement name="Background" style="flex-grow: 0; flex-basis: 50%; align-items: stretch; background-color: rgb(111, 111, 111);">
-            <ui:VisualElement name="Container" style="flex-grow: 1; align-items: stretch; justify-content: space-around;">
-                <ui:Button text="退出游戏" name="ExitButton" />
+    <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; justify-content: center; display: flex;">
+        <ui:VisualElement name="Background" style="flex-grow: 0; flex-basis: 100%; align-items: stretch; background-color: rgba(111, 111, 111, 0);">
+            <ui:VisualElement name="MenuContainer" style="flex-grow: 1; align-items: stretch; justify-content: space-around; position: absolute; width: 400px; background-color: rgba(0, 0, 0, 0.69); padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; top: 100px; left: 80px;">
+                <ui:Button text="退出游戏" name="ExitButton" class="menuBtn" />
+                <ui:Button text="Button" name="Button" emoji-fallback-support="true" class="menuBtn" />
+                <ui:Button text="Button" name="Button" emoji-fallback-support="true" class="menuBtn" />
+                <ui:Button text="Button" name="Button" emoji-fallback-support="true" class="menuBtn" />
             </ui:VisualElement>
+            <ui:VisualElement name="CharacterPannel" class="characterPannel" style="flex-grow: 1; width: 700px;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

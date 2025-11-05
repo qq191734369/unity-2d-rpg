@@ -18,6 +18,8 @@ public class DataManager : MonoBehaviour
     [SerializeField]
     public TextAsset MonsterInfoTextAsset;
     [SerializeField]
+    public TextAsset CharacterTextAsset;
+    [SerializeField]
     public GameGlobalData gameGlobalData;
 
 
@@ -26,6 +28,9 @@ public class DataManager : MonoBehaviour
         gameGlobalData.ChatDictionary = ChatDataParser.BuildChatData(chatTextAsset);
         gameGlobalData.LevelExpMap = LevelDataParser.BuildLevelExpMap(levelExpTextAsset);
         gameGlobalData.MonsterInfoMap = MonsterInfoParser.BuildMonsterInfoMap(MonsterInfoTextAsset);
+        CharacterParseResult cRes = CharacterInfoParser.BuildCharacterInfoMap(CharacterTextAsset);
+        gameGlobalData.PlayerInfo = cRes.Player;
+        gameGlobalData.CharacterInfoMap = cRes.CharacterMap;
     }
 
     public ChatSection GetChatSectionByNameAndGroup(string name, string group = "default")
@@ -35,27 +40,44 @@ public class DataManager : MonoBehaviour
 
     public CharacterEntity GetCharacterByName(string name)
     {
-        return gameGlobalData.CharacterEntities.Find((d) => d.info.Name == name);
+        if (gameGlobalData.CharacterInfoMap.ContainsKey(name))
+        {
+            return gameGlobalData.CharacterInfoMap[name];
+        }
+        return null;
     }
 
-    public CharacterEntity GetMonsterInfoByName(string name) {
+    public CharacterEntity GetMonsterInfoByName(string name)
+    {
         return gameGlobalData.MonsterInfoMap[name]?.DeepCopy();
     }
 
     public void AddPartyMember(string name)
     {
-        if (gameGlobalData.PartyMemberNameList.Contains(name)) {
+        if (gameGlobalData.PartyMemberNameList.Contains(name))
+        {
             return;
         }
 
         gameGlobalData.PartyMemberNameList.Add(name);
     }
 
-    public void RemovePartyMember(string name) {
+    public void RemovePartyMember(string name)
+    {
         if (gameGlobalData.PartyMemberNameList.Contains(name))
         {
             gameGlobalData.PartyMemberNameList.Remove(name);
         }
+    }
+
+    public List<CharacterEntity> GetPartyMemberEntityList()
+    {
+        if (gameGlobalData.PartyMemberNameList == null)
+        {
+            return null;
+        }
+
+        return gameGlobalData.PartyMemberNameList.Select((d) => GetCharacterByName(d)).Where(d => d != null).ToList();
     }
 }
 
@@ -78,11 +100,13 @@ public class CharacterEntity
 
     public enum Race
     {
+        None,
         Human,
         Monster,
         Dog
     }
 
+    public bool IsPlayer;
     public Race race;
     public ClassType classType;
     public BattleBasicInfos info;
@@ -118,12 +142,14 @@ public class GameGlobalData
     public Dictionary<string, ChatSectionByGroup> ChatDictionary;
     // 玩家信息
     public CharacterEntity PlayerInfo;
+    //// 角色信息
+    //public List<CharacterEntity> CharacterEntities;
     // 角色信息
-    public List<CharacterEntity> CharacterEntities;
+    public Dictionary<string, CharacterEntity> CharacterInfoMap;
     // 队伍列表、为了保证游戏内引用的对象都为globalData便于管理、这里只存名字，在partyManager中进行构建
     public List<string> PartyMemberNameList;
     // 等级-经验表格
-    public Dictionary<int, int> LevelExpMap;
+    public Dictionary<int, long> LevelExpMap;
     // 怪物信息表
     public Dictionary<string, CharacterEntity> MonsterInfoMap;
 }

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4004376678400985852}
   - component: {fileID: 6172210169137889096}
   m_Layer: 6
-  m_Name: Player
+  m_Name: Laya
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

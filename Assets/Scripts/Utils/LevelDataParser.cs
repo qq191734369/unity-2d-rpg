@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LevelDataParser
 {
-    public static Dictionary<int, int> BuildLevelExpMap(TextAsset textAsset) {
-        Dictionary<int, int> keyValuePairs = new Dictionary<int, int>();
+    public static Dictionary<int, long> BuildLevelExpMap(TextAsset textAsset) {
+        Dictionary<int, long> keyValuePairs = new Dictionary<int, long>();
 
         string[] rows = textAsset.text.Split("\n").Where(d => d.Trim() != "").ToArray();
 
@@ -15,7 +15,7 @@ public class LevelDataParser
             {
                 string[] cols = rows[i].Trim().Split(',');
                 int level = int.Parse(cols[0].Trim());
-                int exp = int.Parse(cols[1].Trim());
+                long exp = long.Parse(cols[1].Trim());
                 keyValuePairs.Add(level, exp);
             }
         }
