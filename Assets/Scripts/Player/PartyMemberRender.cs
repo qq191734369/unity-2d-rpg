@@ -22,7 +22,10 @@ public class PartyMemberRender : MonoBehaviour
         dataManager = gameManagerObj.GetComponent<DataManager>();
 
         // 设置玩家位置
-        gameObject.transform.position = dataManager.gameGlobalData.PlayerInfo.Position;
+        if (dataManager.gameGlobalData.PlayerInfo.Position != Vector3.zero)
+        {
+            gameObject.transform.position = dataManager.gameGlobalData.PlayerInfo.Position;
+        }
 
         partyManager.InitedCallback(handlePartyInited);
     }
@@ -61,7 +64,7 @@ public class PartyMemberRender : MonoBehaviour
             tempOverworldMember.GetComponent<CharactorInfo>().CharacterInfo = currentEntity;
 
             // 读取保存的位置信息
-            if (characterEntities[i].Position != null)
+            if (characterEntities[i].Position != Vector3.zero)
             {
                 tempOverworldMember.transform.position = currentEntity.Position;
             }
