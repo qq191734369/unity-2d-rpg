@@ -51,6 +51,8 @@ public class BattleManager : MonoBehaviour
     private int currentBattleCharacterIndex = 0;
 
     private List<BattleVisual> battleQueue = new List<BattleVisual>();
+    // 被击败的敌人列表
+    private List<BattleBasicInfos> defeatEnemyList = new List<BattleBasicInfos>();
 
     // 避免重复初始化
     private bool inited = false;
@@ -89,6 +91,11 @@ public class BattleManager : MonoBehaviour
             CharacterEntity enemyEntity = dataManager.GetMonsterInfoByName(sceneEnemyInfos[i].Name);
             enemyEntity.info.SetLevel(sceneEnemyInfos[i].Level);
             enemyList.Add(enemyEntity);
+        }
+
+        if (enemyList.Count == 0) {
+            BackToWorldMap();
+            return;
         }
 
         initEnemyVisual(enemyList);
@@ -194,6 +201,7 @@ public class BattleManager : MonoBehaviour
         {
             battleUI.AppendBattleMessage("战斗胜利！");
             yield return new WaitForSeconds(1);
+            yield return StartCoroutine(BattleWinCorotine());
             // 重置状态
             ResetBattleStatus();
             BackToWorldMap();
@@ -212,6 +220,46 @@ public class BattleManager : MonoBehaviour
         ResetBattleStatus();
         battleUI.ShowIU(enemyBattleVisualList);
         battleUI.ShowBattlerLabel(charactorBattleVisualList[currentBattleCharacterIndex].info.Name);
+
+        yield break;
+    }
+
+    private IEnumerator BattleWinCorotine()
+    {
+        long exp = 0;
+        foreach (var item in defeatEnemyList)
+        {
+            exp += item.DealthExp;
+        }
+        battleUI.AppendBattleMessage($"获得exp: {exp}");
+
+        List<LevelChangeInfo> levelUpList = new List<LevelChangeInfo>();
+
+        foreach (var item in partyMembers) {
+            
+            var levelUpInfo = LevelManager.AddExp(item, exp);
+            if (levelUpInfo != null) {
+                levelUpList.Add(levelUpInfo);
+            }
+        }
+
+        if (levelUpList.Count == 0)
+        {
+            yield break;
+        }
+
+        foreach (var item in levelUpList) {
+            battleUI.AppendBattleMessage($"{item.info.Name} 升级到 level {item.info.Level}");
+            yield return new WaitForSeconds(0.25f);
+            battleUI.AppendBattleMessage($"攻击力+{item.Attack}");
+            yield return new WaitForSeconds(0.25f);
+            battleUI.AppendBattleMessage($"防御力+{item.Defense}");
+            yield return new WaitForSeconds(0.25f);
+            battleUI.AppendBattleMessage($"生命值+{item.Health}");
+            yield return new WaitForSeconds(0.25f);
+            battleUI.AppendBattleMessage($"升级还需{item.NextExp}");
+            yield return new WaitForSeconds(0.25f);
+        }
 
         yield break;
     }
@@ -238,6 +286,7 @@ public class BattleManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         // 跳转场景
+        ResetBattleStatus();
         BackToWorldMap();
         yield break;
     }
@@ -305,6 +354,7 @@ public class BattleManager : MonoBehaviour
             if (current.AttackTarget.battlerType == BattleVisual.BattlerType.Enemy)
             {
                 enemyBattleVisualList.Remove(current.AttackTarget);
+                defeatEnemyList.Add(current.AttackTarget.info);
             }
             else
             {

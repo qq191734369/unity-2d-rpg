@@ -33,6 +33,7 @@ public class MonsterInfoParser
                 var info = new BattleBasicInfos
                 {
                     Level = 1,
+                    DealthExp = exp,
                     Name = name,
                     Description = desc,
                     MaxHealth = baseHealth,

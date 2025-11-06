@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 6172210169137889096}
   m_Layer: 6
   m_Name: Laya
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b9e2b3f292ab44b923756d529691f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MemberVisualList: []
 --- !u!114 &4956208221527594399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e7c6f8b8590931479624fb583e960a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7
 --- !u!114 &7326244084923512981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,10 +253,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterInfo:
+    IsPlayer: 0
     race: 0
     classType: 0
     info:
       Level: 0
+      CurrentExp: 0
       Name: 
       Description: 
       MaxHealth: 0

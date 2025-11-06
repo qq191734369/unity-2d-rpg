@@ -14,6 +14,8 @@ public partial class CharacterCard : VisualElement
     Label HealthNum;
     VisualElement Avartar;
     Label Level;
+    Label NextExp;
+    Label CurrentExp;
 
     public CharacterCard() { }
 
@@ -27,6 +29,8 @@ public partial class CharacterCard : VisualElement
         CurrentHealthBar = templateContainer.Q<VisualElement>("CurrentHealth");
         Avartar = templateContainer.Q<VisualElement>("Avartar");
         Level = templateContainer.Q<Label>("Level");
+        NextExp = templateContainer.Q<Label>("NextExp");
+        CurrentExp = templateContainer.Q<Label>("CurrentExp");
 
         UpdateData(characterEntity);
 
@@ -44,6 +48,11 @@ public partial class CharacterCard : VisualElement
         CurrentHealthBar.style.width = Length.Percent((float)info.CurrentHealth / info.MaxHealth * 100);
         Texture2D texture2D = Resources.Load<Texture2D>($"Sprites/Characters/{name}/{name}-Avatar");
         Avartar.style.backgroundImage = new StyleBackground(texture2D);
+
+        // 计算下一级经验
+        long nextExp = LevelManager.GetExpToLevelUp(characterEntity);
+        NextExp.text = $"下一级还需exp: {nextExp}";
+        CurrentExp.text = $"当前exp: {info.CurrentExp}";
 
         return this;
     }

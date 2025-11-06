@@ -12,9 +12,9 @@
                 <ui:Label text="状态" class="btnText" />
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="BattleInfo" enabled="true" class="battleInfo" style="flex-grow: 0; display: none; flex-shrink: 1;">
+        <ui:VisualElement name="BattleInfo" enabled="true" class="battleInfo" style="flex-grow: 1; display: flex; flex-shrink: 1;">
             <ui:ScrollView name="ScrollInfo" style="flex-grow: 1;">
-                <ui:Label text="战斗信息：&#10;12312313&#10;战斗信息战斗信息战斗信息战斗信息战斗信息战斗信息战斗信息战斗信息战斗信息战斗信息战斗信息战斗信息" name="BattleInfoText" emoji-fallback-support="false" selectable="false" double-click-selects-word="false" triple-click-selects-line="false" class="battleInfoText" style="color: rgb(255, 255, 255); font-size: 40px;" />
+                <ui:Label text="战斗信息：&#10;12312313&#10;战斗信息战斗信息战斗息战斗信息战斗信息战斗信息&#10;请问请问&#10;请问请问&#10;请问请问" name="BattleInfoText" emoji-fallback-support="false" selectable="false" double-click-selects-word="false" triple-click-selects-line="false" class="battleInfoText" style="color: rgb(255, 255, 255); font-size: 40px;" />
             </ui:ScrollView>
         </ui:VisualElement>
         <ui:VisualElement name="EnemyList" class="enemyList" style="display: none;">

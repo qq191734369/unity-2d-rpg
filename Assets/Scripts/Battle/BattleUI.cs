@@ -1,6 +1,6 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 public class BattleUI : MonoBehaviour
@@ -88,11 +88,13 @@ public class BattleUI : MonoBehaviour
         enemySelectPanel.style.display = DisplayStyle.None;
         Label label = battleInfoPanel.Q<Label>("BattleInfoText");
         string currentText = label.text;
-        label.text = $"{currentText} \n" + msg;
-
+        label.text = currentText + msg + "\n";
+        // 等待布局完成后获取（推荐）
         ScrollView scrollView = battleInfoPanel.Q<ScrollView>();
-        // 设置垂直滚动位置为最大值
-        scrollView.scrollOffset = new Vector2(0, scrollView.contentContainer.worldBound.height);
+        scrollView.schedule.Execute(() =>
+        {
+            scrollView.scrollOffset = new Vector2(0f, scrollView.contentContainer.layout.height);
+        }).ExecuteLater(50);
     }
 
     private void ShowSelectActionPanel()

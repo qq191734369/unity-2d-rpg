@@ -25,7 +25,7 @@ public class CharacterInfoParser
                 string[] cols = rows[i].Trim().Split(',').Select(d => d.Trim()).ToArray();
                 string id = cols[0];
                 string name = cols[1];
-                //int exp = int.Parse(cols[2]);
+                int exp = int.Parse(cols[2]);
                 int baseHealth = int.Parse(cols[3]);
                 int baseDefense = int.Parse(cols[4]);
                 int baseAttack = int.Parse(cols[5]);
@@ -47,6 +47,7 @@ public class CharacterInfoParser
                     Level = 1,
                     Name = name,
                     Description = desc,
+                    CurrentExp = exp,
                     MaxHealth = baseHealth,
                     CurrentHealth = baseHealth,
                     Speed = baseSpeed,

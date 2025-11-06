@@ -5,10 +5,13 @@ using UnityEngine;
 [System.Serializable]
 public class BattleBasicInfos
 {
-    public static int MAX_LEVEL = 100;
+    public readonly static int MAX_LEVEL = LevelManager.MAX_LEVEL;
+
+    public event System.Action<LevelChangeInfo> OnLevelUp;
 
     public int Level;
-    public int CurrentExp;
+    public long DealthExp;
+    public long CurrentExp;
     public string Name;
     public string Description;
     public int MaxHealth;
@@ -26,6 +29,7 @@ public class BattleBasicInfos
     public BattleBasicInfos(BattleBasicInfos other)
     {
         Level = other.Level;
+        DealthExp = other.DealthExp;
         CurrentExp = other.CurrentExp;
         Name = other.Name;
         Description = other.Description;
@@ -46,31 +50,45 @@ public class BattleBasicInfos
         }
     }
 
-    public BattleBasicInfos SetLevel(int level)
+    public LevelChangeInfo SetLevel(int level)
     {
         int deltaLevel = level - Level;
         if (deltaLevel <= 0) {
-            return this;
+            return null;
         }
-
-        ComputeStatus(deltaLevel);
-
-        return this;
+        Level = level;
+        return ComputeStatus(deltaLevel);
     }
 
-    private void ComputeStatus(int deltaLevel)
+    private LevelChangeInfo ComputeStatus(int deltaLevel)
     {
-        MaxHealth = InfoGrowth.Health * deltaLevel + MaxHealth;
+        var deltaHealth = InfoGrowth.Health * deltaLevel;
+        var deltaAttack = InfoGrowth.Attack * deltaLevel;
+        var deltaDefense = InfoGrowth.Defense * deltaLevel;
+
+        MaxHealth = deltaHealth + MaxHealth;
         CurrentHealth = MaxHealth;
-        Attack = InfoGrowth.Attack * deltaLevel + Attack;
-        Defense = InfoGrowth.Defense * deltaLevel + Defense;
+        Attack = deltaAttack + Attack;
+        Defense = deltaDefense + Defense;
+
+        var levelUp = new LevelChangeInfo
+        {
+            Attack = deltaAttack,
+            Defense = deltaDefense,
+            Health = deltaHealth,
+            Level = deltaLevel,
+            info = this,
+        };
+        OnLevelUp?.Invoke(levelUp);
+
+        return levelUp;
     }
 
-    public BattleBasicInfos AddLevel(int levelGrowth)
+    public LevelChangeInfo AddLevel(int levelGrowth)
     {
         if (levelGrowth <=0)
         {
-            return this;
+            return null;
         }
 
         int targetLevel = Level + levelGrowth;
@@ -80,9 +98,12 @@ public class BattleBasicInfos
         }
 
         int deltaLevel = targetLevel - Level;
-        ComputeStatus(deltaLevel);
+        if (deltaLevel > 0)
+        {
+            return ComputeStatus(deltaLevel);
+        }
 
-        return this;
+        return null;
     }
 }
 
@@ -103,3 +124,12 @@ public class InfoGrowth
     }
 }
 
+public class LevelChangeInfo
+{
+    public BattleBasicInfos info;
+    public int Level;
+    public int Attack;
+    public int Defense;
+    public int Health;
+    public long NextExp;
+}

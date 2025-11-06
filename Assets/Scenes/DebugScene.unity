@@ -6512,17 +6512,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 928365100555124334, guid: d63d646a84dd3344f826ff0cce69ae2c, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 1793031803274394576, guid: d63d646a84dd3344f826ff0cce69ae2c, type: 3}
       propertyPath: m_SortingLayer
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4956208221527594399, guid: d63d646a84dd3344f826ff0cce69ae2c, type: 3}
-      propertyPath: speed
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7454184078966019140, guid: d63d646a84dd3344f826ff0cce69ae2c, type: 3}
       propertyPath: m_LocalPosition.x
