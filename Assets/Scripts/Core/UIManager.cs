@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -5,9 +6,23 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField]
     public UIDocument uiDocument;
-    private Button exitGameBtn;
+
+    [Header("Debug")]
+    public static Stack<Object> UIStack = new Stack<Object>();
+
     private GameManager gameManager;
     private PartyManager partyManager;
+
+    private MainMenuUI mainMenuUI;
+
+    public static bool IsOnTop(Object uiInstance)
+    {
+        if (UIStack.Count == 0) {
+            return false;
+        }
+        return UIStack.Peek().Equals(uiInstance);
+    }
+
 
     private void Awake()
     {
@@ -18,11 +33,21 @@ public class UIManager : MonoBehaviour
     {
         gameManager = gameManagerObj.GetComponent<GameManager>();
         partyManager = gameManagerObj.GetComponent<PartyManager>();
+        mainMenuUI = gameManagerObj.GetComponentInChildren<MainMenuUI>();
+    }
 
-        exitGameBtn = uiDocument.rootVisualElement.Q<Button>("ExitButton");
-        exitGameBtn.clicked += ExitGame;
+    public static void Push(Object uiInstance)
+    {
+        UIStack.Push(uiInstance);
+    }
 
-        uiDocument.rootVisualElement.style.display = DisplayStyle.None;
+    public static Object Pop(Object uiInstance)
+    {
+        if (UIStack.Peek().Equals(uiInstance))
+        {
+            return UIStack.Pop();
+        }
+        return null;
     }
 
     private void OnEnable()
@@ -35,36 +60,20 @@ public class UIManager : MonoBehaviour
   
     }
 
-    void ExitGame()
-    {
-        Debug.Log("clicked exit game btn");
-        GameActions.ExitGame();
-    }
-
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.C)) {
-            CreateCharacterListUI();
-        }
-    }
-
-    private void CreateCharacterListUI()
-    {
-        uiDocument.rootVisualElement.style.display = uiDocument.rootVisualElement.style.display == DisplayStyle.None ? DisplayStyle.Flex : DisplayStyle.None;
-        VisualElement pannel = uiDocument.rootVisualElement.Q<VisualElement>("CharacterPannel");
-        if (pannel == null) {
-            return;
-        }
-
-        var allPartyMembers = partyManager.AllMembers;
-        if (allPartyMembers == null) {
-            return;
-        }
-
-        pannel.Clear();
-        foreach (var member in allPartyMembers) {
-            var characterCard = new CharacterCard(member);
-            pannel.Add(characterCard);
+            if (UIStack.Count > 0)
+            {
+                while (UIStack.Count > 0) {
+                    var ui = UIStack.Pop() as IUIBase;
+                    ui.Close();
+                }
+            } else
+            {
+                UIStack.Push(mainMenuUI);
+                mainMenuUI.Show();
+            }
         }
     }
 }

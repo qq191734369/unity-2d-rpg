@@ -2,13 +2,17 @@
     <Style src="project://database/Assets/Resources/UI/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=faaa61ffc80cd7c469cbc86a90a67d33&amp;type=3#MainMenu" />
     <ui:VisualElement name="VisualElement" style="flex-grow: 1; flex-direction: row; justify-content: center; display: flex;">
         <ui:VisualElement name="Background" style="flex-grow: 0; flex-basis: 100%; align-items: stretch; background-color: rgba(111, 111, 111, 0);">
-            <ui:VisualElement name="MenuContainer" style="flex-grow: 1; align-items: stretch; justify-content: space-around; position: absolute; width: 400px; background-color: rgba(0, 0, 0, 0.69); padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-right-radius: 20px; border-bottom-left-radius: 20px; top: 100px; left: 80px;">
+            <ui:VisualElement name="MenuContainer" style="flex-grow: 1; align-items: stretch; justify-content: space-around; position: absolute; width: 300px; background-color: rgb(0, 0, 0); padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; border-top-left-radius: 0; border-top-right-radius: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; top: 50px; left: 50px;">
                 <ui:Button text="退出游戏" name="ExitButton" class="menuBtn" />
                 <ui:Button text="Button" name="Button" emoji-fallback-support="true" class="menuBtn" />
                 <ui:Button text="Button" name="Button" emoji-fallback-support="true" class="menuBtn" />
                 <ui:Button text="Button" name="Button" emoji-fallback-support="true" class="menuBtn" />
             </ui:VisualElement>
-            <ui:VisualElement name="CharacterPannel" class="characterPannel" style="flex-grow: 1; width: 700px;" />
+            <ui:VisualElement name="CharacterPannel" class="characterPannel" style="flex-grow: 1; width: 600px;" />
+            <ui:VisualElement name="Actions" style="flex-grow: 1; position: absolute; width: 600px; height: 300px; bottom: 50px; right: 50%; translate: 50% 0; background-color: rgb(0, 0, 0); padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; flex-direction: row; flex-wrap: wrap;">
+                <ui:Button text="背包" name="BagBtn" class="actionBtn active" />
+                <ui:Button text="乘降" name="DriveBtn" class="actionBtn" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

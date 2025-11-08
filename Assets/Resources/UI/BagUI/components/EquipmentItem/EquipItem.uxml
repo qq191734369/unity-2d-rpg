@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/BagUI/components/EquipmentItem/EquipmentItem.uss?fileID=7433441132597879392&amp;guid=da42ab4d27dcd964c9e57de4074856eb&amp;type=3#EquipmentItem" />
+    <ui:VisualElement name="EquipItem" style="flex-grow: 1; height: 50px; padding-top: 5px; padding-right: 5px; padding-bottom: 5px; padding-left: 5px; flex-direction: row;">
+        <ui:Label text="装备名字" name="Name" style="flex-grow: 1; color: rgb(255, 255, 255); -unity-text-align: middle-left; font-size: 30px;" />
+        <ui:Label text="Lv:100" name="Level" style="color: rgb(255, 255, 255); -unity-text-align: middle-left; font-size: 30px;" />
+    </ui:VisualElement>
+</ui:UXML>

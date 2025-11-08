@@ -1,0 +1,29 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="EquipItem" src="project://database/Assets/Resources/UI/BagUI/components/EquipmentItem/EquipItem.uxml?fileID=9197481963319205126&amp;guid=09039e2d2e814a942b875b82829eba03&amp;type=3#EquipItem" />
+    <ui:Template name="InfoCard" src="project://database/Assets/Resources/UI/BagUI/components/InfoCard/InfoCard.uxml?fileID=9197481963319205126&amp;guid=5b2437313c16bdf478acb4d4fb4195e2&amp;type=3#InfoCard" />
+    <Style src="project://database/Assets/Resources/UI/BagUI/BagUI.uss?fileID=7433441132597879392&amp;guid=8b7d5b01604a0594fb0258f8efb9273a&amp;type=3#BagUI" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgb(0, 0, 0); flex-direction: row; display: flex;">
+        <ui:VisualElement name="EquipmentList" style="flex-grow: 0; background-color: rgb(0, 0, 0); width: 720px; border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; border-left-color: rgb(219, 219, 219); border-right-color: rgb(219, 219, 219); border-top-color: rgb(219, 219, 219); border-bottom-color: rgb(219, 219, 219);">
+            <ui:VisualElement name="TypeSelector" style="flex-grow: 0; height: 100px; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; flex-direction: row;">
+                <ui:Button text="人类" name="HumanBtn" class="typeSelecterItem active" />
+                <ui:Button text="战车" name="CarBtn" class="typeSelecterItem" />
+            </ui:VisualElement>
+            <ui:VisualElement name="SubTypeSelector" style="flex-grow: 0; flex-direction: row; height: 60px; padding-top: 0; padding-right: 20px; padding-bottom: 0; padding-left: 20px;">
+                <ui:Button text="武器" name="WeaponBtn" class="subSelectorItemItem active" />
+                <ui:Button text="头盔" name="Head" class="subSelectorItemItem" />
+                <ui:Button text="盔甲" name="Body" class="subSelectorItemItem" />
+                <ui:Button text="鞋子" name="Shoe" class="subSelectorItemItem" />
+            </ui:VisualElement>
+            <ui:VisualElement name="ListContainer" style="flex-grow: 1; border-top-width: 4px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255);">
+                <ui:ScrollView name="ScrollView" style="flex-grow: 1; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px;">
+                    <ui:VisualElement name="EquipListContent" style="flex-grow: 1;">
+                        <ui:Instance template="EquipItem" name="EquipItem" />
+                    </ui:VisualElement>
+                </ui:ScrollView>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="DetailContainer" style="flex-grow: 1;">
+            <ui:Instance template="InfoCard" name="InfoCard" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

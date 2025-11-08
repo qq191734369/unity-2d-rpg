@@ -1,0 +1,22 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="InfoCard" style="flex-grow: 1; position: absolute; width: 600px; height: 800px; color: rgb(255, 255, 255); border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
+        <ui:VisualElement name="Title" class="detailLine" style="font-size: 20px; -unity-font-style: bold;">
+            <ui:Label text="装备名称" name="Text" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Level" class="detailLine" style="-unity-text-align: upper-right;">
+            <ui:Label text="Lv:100" name="Text" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Des" class="detailLine" style="flex-direction: row; align-items: flex-start;">
+            <ui:Label text="简介:" name="Name" />
+            <ui:Label text="请问请问请问请问请问请问请问请问请问请问请问请问请问请问请问请问请问请问请问请问请问恶气" name="Value" style="white-space: normal; flex-grow: 1; width: 0;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Attack" class="detailLine" style="flex-direction: row; align-items: center;">
+            <ui:Label text="攻击力:" name="Name" />
+            <ui:Label text="10" name="Value" />
+        </ui:VisualElement>
+        <ui:VisualElement name="Defense" class="detailLine" style="flex-direction: row; align-items: center;">
+            <ui:Label text="防御力:" name="Name" />
+            <ui:Label text="10" name="Value" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

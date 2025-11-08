@@ -1,0 +1,24 @@
+.typeSelecterItem {
+    background-color: rgb(183, 183, 183);
+    flex-grow: 1;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    font-size: 34px;
+}
+
+.active {
+    background-color: rgb(255, 255, 255);
+    -unity-font-style: bold;
+}
+
+.subSelectorItemItem {
+    flex-grow: 1;
+    font-size: 27px;
+}
+
+.detailLine {
+    height: auto;
+    font-size: 30px;
+}

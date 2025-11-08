@@ -152,5 +152,7 @@ public class GameGlobalData
     public Dictionary<int, long> LevelExpMap;
     // 怪物信息表
     public Dictionary<string, CharacterEntity> MonsterInfoMap;
+    // 背包信息
+    public BagEntity BagInfo;
 }
 
