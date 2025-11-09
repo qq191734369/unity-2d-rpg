@@ -1,4 +1,4 @@
-.typeSelecterItem {
+.typeSelectorItem {
     background-color: rgb(183, 183, 183);
     flex-grow: 1;
     padding-top: 0;

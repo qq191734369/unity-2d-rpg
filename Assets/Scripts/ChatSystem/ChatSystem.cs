@@ -29,6 +29,7 @@ public class ChatSystem : MonoBehaviour
     private GameManager gameManager;
     private ChatUIScript chatUIScript;
     private DataManager dataManager;
+    private UIManager uiManager;
 
     private InteractableObject interactableObject;
     private ChatSection currentChatSection;
@@ -39,8 +40,10 @@ public class ChatSystem : MonoBehaviour
     private void Awake()
     {
         gameManager = GetComponent<GameManager>();
-        chatUIScript = gameManager.ChatUIDocument.GetComponent<ChatUIScript>();
+        uiManager = GetComponent<UIManager>();
         dataManager = GetComponent<DataManager>();
+
+        chatUIScript = uiManager.ChatUIDocument.GetComponent<ChatUIScript>();
     }
 
     private void Update()
@@ -50,6 +53,7 @@ public class ChatSystem : MonoBehaviour
 
     private void DetectBtnPress()
     {
+
         if (
             Input.GetKeyUp(KeyCode.X)
             // 在对话中
@@ -60,18 +64,29 @@ public class ChatSystem : MonoBehaviour
             && !isSleep
         )
         {
+            if (UIManager.IsUIAcitve)
+            {
+                return;
+            }
             HandleNextChatContent();
         }
     }
 
     public void StartChat(InteractableObject obj)
     {
+        if (UIManager.IsUIAcitve)
+        {
+            Debug.Log("UI is active, can't start chat");
+            return;
+        }
+
         interactableObject = obj;
         ChatSection section = obj.chatSection;
         if (!section.isEmpty())
         {
             // 开始对话
             status = ChatStatus.InProcess;
+            UIManager.SetChating(true);
             currentChatSection = section;
             ShowCurrentSection();
         }
@@ -84,6 +99,7 @@ public class ChatSystem : MonoBehaviour
         contentIndex = 0;
         currentChatSection = null;
         chatUIScript.Hide();
+        UIManager.SetChating(false);
         Debug.Log($"ResetChat,currentChatSection {currentChatSection}");
     }
 

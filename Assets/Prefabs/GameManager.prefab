@@ -54,7 +54,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92518279caf3cf94681310abe44d5cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ChatUIDocument: {fileID: 495632403124001073}
 --- !u!114 &7887333219540498956
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,7 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35db9b68764ef3a46bda467290c709c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiDocument: {fileID: 6320897539601701446}
+  MainUIDocument: {fileID: 6320897539601701446}
+  ChatUIDocument: {fileID: 495632403124001073}
 --- !u!114 &4612488909024434898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
           DealthExp: 0
           CurrentExp: 0
           Name: "\u5F39\u5F13"
-          Description: 
+          Description: "\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5\u6D4B\u8BD5"
           MaxHealth: 0
           CurrentHealth: 0
           Speed: 0
@@ -183,6 +183,21 @@ MonoBehaviour:
           CurrentHealth: 0
           Speed: 0
           Attack: 0
+          Defense: 5
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+      - ID: 1
+        CategoryType: 0
+        EquipmentValues:
+          Level: 80
+          DealthExp: 0
+          CurrentExp: 0
+          Name: "\u6D4B\u8BD5\u6B66\u56681"
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 100
+          Speed: 0
+          Attack: 100
           Defense: 5
           OverWorldPrefab: {fileID: 0}
           BattlePrefab: {fileID: 0}
@@ -404,7 +419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 808862340405818633}
   m_Layer: 0
-  m_Name: UserUI
+  m_Name: UserUICollection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

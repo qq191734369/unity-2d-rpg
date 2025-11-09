@@ -10,9 +10,10 @@ public class PlayerMove : MonoBehaviour
     private Vector2 playerMove;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
-    private List<InteractableObject> nearbyInteractables = new List<InteractableObject>();
     private GameManager gameManager;
     private ChatUIScript chatUIScript;
+
+    private UIManager uiManager;
 
     private void Awake()
     {
@@ -25,7 +26,8 @@ public class PlayerMove : MonoBehaviour
     void init(GameObject gameManagerObj)
     {
         gameManager = gameManagerObj.GetComponent<GameManager>();
-        chatUIScript = gameManager.ChatUIDocument.GetComponent<ChatUIScript>();
+        uiManager = gameManagerObj.GetComponent<UIManager>();
+        chatUIScript = uiManager.ChatUIDocument.GetComponent<ChatUIScript>();
     }
 
     // Update is called once per frame
@@ -36,6 +38,11 @@ public class PlayerMove : MonoBehaviour
 
     void OnMove(InputValue inputValue)
     {
+        if (GameManager.IsPaused)
+        {
+            return;
+        }
+
         if (chatUIScript.isActive)
         {
             playerMove = default;

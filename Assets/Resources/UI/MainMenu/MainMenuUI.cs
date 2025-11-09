@@ -56,6 +56,7 @@ public class MainMenuUI : MonoBehaviour, IUIBase
 
     public void Show()
     {
+        UIManager.Push(this);
         // 人物列表渲染
         CreateCharacterListUI(partManager.AllMembers);
         isActive = true;
@@ -68,6 +69,7 @@ public class MainMenuUI : MonoBehaviour, IUIBase
         isActive = false;
         uiDocument.rootVisualElement.style.display = DisplayStyle.None;
         activeActionBtnIndex = 0;
+        UIManager.Pop(this);
     }
 
     private void CreateCharacterListUI(List<CharacterEntity> allMembers)
@@ -135,6 +137,9 @@ public class MainMenuUI : MonoBehaviour, IUIBase
         } else if (Input.GetKeyUp(KeyCode.X))
         {
             HandleActionPress();
+        } else if (Input.GetKeyUp(KeyCode.Z))
+        {
+            HandleCancelBtnPress();
         }
     }
 
@@ -150,6 +155,11 @@ public class MainMenuUI : MonoBehaviour, IUIBase
             default:
                 break;
         }
+    }
+
+    private void HandleCancelBtnPress()
+    {
+        Close();
     }
 
     private void SetActiveBtn(int targetIndex)

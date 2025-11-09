@@ -12,14 +12,14 @@ public delegate void OnGameInitedCallback(GameObject obj);
 // Global Manager
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] public UIDocument ChatUIDocument;
-
     const string GAME_MANAGER_KEY = "GameManager";
     const string PLAYER_TAG = "Player";
 
     public static System.Action Ready;
 
     public static GameObject Instance;
+
+    public static bool IsPaused = false;
 
     private void Awake()
     {
@@ -78,5 +78,23 @@ public class GameManager : MonoBehaviour
             characterInfo.Scene = scene.name;
             characterInfo.Position = d.transform.position;
         });
+    }
+
+    public static void PauseGame()
+    {
+        IsPaused = true;
+        Time.timeScale = 0f; // 暂停游戏时间
+
+        // 可选：禁用玩家输入
+        // PlayerController.Instance.SetInputEnabled(false);
+    }
+
+    public static void ResumeGame()
+    {
+        IsPaused = false;
+        Time.timeScale = 1f; // 恢复游戏时间
+
+        // 可选：启用玩家输入
+        // PlayerController.Instance.SetInputEnabled(true);
     }
 }

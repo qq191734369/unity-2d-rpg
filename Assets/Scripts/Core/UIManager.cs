@@ -5,7 +5,9 @@ using UnityEngine.UIElements;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
-    public UIDocument uiDocument;
+    public UIDocument MainUIDocument;
+    [SerializeField]
+    public UIDocument ChatUIDocument;
 
     [Header("Debug")]
     public static Stack<Object> UIStack = new Stack<Object>();
@@ -15,12 +17,33 @@ public class UIManager : MonoBehaviour
 
     private MainMenuUI mainMenuUI;
 
+    // 是否在对话中
+    private static bool isChating;
+
+
     public static bool IsOnTop(Object uiInstance)
     {
         if (UIStack.Count == 0) {
             return false;
         }
         return UIStack.Peek().Equals(uiInstance);
+    }
+
+    // 是否有交互UI激活
+    public static bool IsUIAcitve
+    {
+        get {
+            return UIStack.Count > 0;
+        }
+    }
+
+    public static void SetChating(bool status)
+    {
+        isChating = status;
+    }
+
+    public static bool IsChating { 
+        get { return isChating; }
     }
 
 
@@ -38,11 +61,18 @@ public class UIManager : MonoBehaviour
 
     public static void Push(Object uiInstance)
     {
+        if (UIStack.Contains(uiInstance)) {
+            return;
+        }
         UIStack.Push(uiInstance);
     }
 
     public static Object Pop(Object uiInstance)
     {
+        if (UIStack.Count == 0)
+        {
+            return null;
+        }
         if (UIStack.Peek().Equals(uiInstance))
         {
             return UIStack.Pop();
@@ -71,8 +101,24 @@ public class UIManager : MonoBehaviour
                 }
             } else
             {
-                UIStack.Push(mainMenuUI);
+                if (IsChating)
+                {
+                    return;
+                }
                 mainMenuUI.Show();
+            }
+        }
+
+        if (UIStack.Count > 0) {
+            if (!GameManager.IsPaused)
+            {
+                GameManager.PauseGame();
+            }
+        } else
+        {
+            if (GameManager.IsPaused)
+            {
+                GameManager.ResumeGame();
             }
         }
     }
