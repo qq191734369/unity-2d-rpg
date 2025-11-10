@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="CharacterItem" style="flex-grow: 1; color: rgb(255, 255, 255); font-size: 35px; flex-direction: row; align-items: center;">
+        <ui:VisualElement name="Avartar" style="flex-grow: 0; width: 80px; height: 80px; margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px;" />
+        <ui:Label text="名字" name="Name" style="padding-left: 8px; padding-right: 8px;" />
+    </ui:VisualElement>
+</ui:UXML>

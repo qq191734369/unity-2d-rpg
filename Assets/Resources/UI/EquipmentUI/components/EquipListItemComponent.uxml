@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/EquipmentUI/components/EquipListItemComponent.uss?fileID=7433441132597879392&amp;guid=869ebb6846d02fa428816eb4a08d3389&amp;type=3#EquipListItemComponent" />
+    <ui:VisualElement name="EquipListItemComponent" class="equipListItemComp" style="flex-grow: 0; flex-direction: row; padding-top: 4px; padding-bottom: 4px; padding-right: 10px; padding-left: 10px; justify-content: flex-start; align-items: center;">
+        <ui:Label text="武器:" name="Tag" style="font-size: 30px;" />
+        <ui:Label text="Label" name="Name" style="font-size: 30px; padding-left: 20px; padding-right: 20px;" />
+    </ui:VisualElement>
+    <ui:VisualElement name="BagListComponent" class="equipListItemComp" style="flex-grow: 0; flex-direction: row; padding-top: 4px; padding-bottom: 4px; padding-right: 10px; padding-left: 10px; justify-content: space-between; align-items: center;">
+        <ui:Label text="武器名字" name="Name" style="font-size: 30px;" />
+        <ui:Label text="level" name="Level" style="font-size: 30px; padding-left: 20px; padding-right: 20px;" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -14,9 +14,13 @@ public class BagEntity
 [System.Serializable]
 public class HumanEquipmentEntity
 {
+    // 随机生成的编号
+    public string No;
+
     public string ID;
     public enum Category
     {
+        None,
         Weapon,
         Head,
         Body,
@@ -26,6 +30,25 @@ public class HumanEquipmentEntity
     public Category CategoryType;
     // 装备基本属性
     public BasicValues EquipmentValues;
+
+    // 哪位角色装备
+    //public CharacterEntity Character;
+
+    public HumanEquipmentEntity() { }
+
+    public HumanEquipmentEntity(HumanEquipmentEntity other)
+    {
+        ID = other.ID;
+        CategoryType = other.CategoryType;
+        EquipmentValues = new BasicValues(other.EquipmentValues);
+    }
+
+    public HumanEquipmentEntity DeepCopy()
+    {
+        var res = new HumanEquipmentEntity(this);
+        
+        return res;
+    }
 }
 
 [System.Serializable]

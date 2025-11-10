@@ -9,6 +9,8 @@ public class MainMenuUI : MonoBehaviour, IUIBase
 
     [SerializeField]
     UIDocument bagUI;
+    [SerializeField]
+    UIDocument equipmentUI;
 
     private UIDocument uiDocument;
 
@@ -103,6 +105,7 @@ public class MainMenuUI : MonoBehaviour, IUIBase
         actionButtons = actionContainer.Query<Button>(classes: "actionBtn").ToList();
         if (actionButtons.Count > 0)
         {
+            actionButtons.ForEach(d => d.RemoveFromClassList(ACTION_BTN_ACTIVE_CLASS));
             activeActionBtnIndex = 0;
             actionButtons[activeActionBtnIndex].AddToClassList(ACTION_BTN_ACTIVE_CLASS);
         }
@@ -152,9 +155,25 @@ public class MainMenuUI : MonoBehaviour, IUIBase
             case "BagBtn":
                 bagUI.GetComponent<BagUI>().Show();
                 break;
+            case "EquipBtn":
+                HandleEquipBtnPress();
+                break;
             default:
                 break;
         }
+    }
+
+    private void HandleEquipBtnPress()
+    {
+        var members = partManager.AllMembers;
+        var characterSelector = CharacterSelectorUI.Create(members);
+
+        characterSelector.OnSelect += (CharacterEntity entity) =>
+        {
+            Debug.Log("Select character");
+            EquipmentUI eq = equipmentUI.GetComponent<EquipmentUI>();
+            eq.Show(entity);
+        };
     }
 
     private void HandleCancelBtnPress()

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7887333219540498956}
   - component: {fileID: 7809450559034793823}
   - component: {fileID: 4612488909024434898}
+  - component: {fileID: 5974186533220074448}
   - component: {fileID: 1664948361361592221}
   - component: {fileID: 4600719563054791249}
   - component: {fileID: 677404327493381035}
@@ -93,6 +94,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PartyList: []
+--- !u!114 &5974186533220074448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2188272183669050599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d27035baf4713d41a31fa069e607d7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1664948361361592221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +146,7 @@ MonoBehaviour:
   levelExpTextAsset: {fileID: 4900000, guid: cb52eb10f25aa3141b501b312c6f413e, type: 3}
   MonsterInfoTextAsset: {fileID: 4900000, guid: 0b7374da4a4b65c4caad782af48baf1b, type: 3}
   CharacterTextAsset: {fileID: 4900000, guid: 262c02d5114dbba4a8a0c8e4d2306a4a, type: 3}
+  HumanEquipmentTextAsset: {fileID: 4900000, guid: 5baa394a58a63d645a739f72c5cb2a28, type: 3}
   gameGlobalData:
     PlayerInfo:
       IsPlayer: 0
@@ -153,11 +167,81 @@ MonoBehaviour:
         BattlePrefab: {fileID: 132648164539383978, guid: 0d2a8f61e72b87548af707405ad7a78a, type: 3}
       Position: {x: 0, y: 0, z: 0}
       Scene: 
+      Equipment:
+        Weapon:
+          No: 
+          ID: 
+          CategoryType: 0
+          EquipmentValues:
+            Level: 0
+            DealthExp: 0
+            CurrentExp: 0
+            Name: 
+            Description: 
+            MaxHealth: 0
+            CurrentHealth: 0
+            Speed: 0
+            Attack: 0
+            Defense: 0
+            OverWorldPrefab: {fileID: 0}
+            BattlePrefab: {fileID: 0}
+        Head:
+          No: 
+          ID: 
+          CategoryType: 0
+          EquipmentValues:
+            Level: 0
+            DealthExp: 0
+            CurrentExp: 0
+            Name: 
+            Description: 
+            MaxHealth: 0
+            CurrentHealth: 0
+            Speed: 0
+            Attack: 0
+            Defense: 0
+            OverWorldPrefab: {fileID: 0}
+            BattlePrefab: {fileID: 0}
+        Body:
+          No: 
+          ID: 
+          CategoryType: 0
+          EquipmentValues:
+            Level: 0
+            DealthExp: 0
+            CurrentExp: 0
+            Name: 
+            Description: 
+            MaxHealth: 0
+            CurrentHealth: 0
+            Speed: 0
+            Attack: 0
+            Defense: 0
+            OverWorldPrefab: {fileID: 0}
+            BattlePrefab: {fileID: 0}
+        Shoe:
+          No: 
+          ID: 
+          CategoryType: 0
+          EquipmentValues:
+            Level: 0
+            DealthExp: 0
+            CurrentExp: 0
+            Name: 
+            Description: 
+            MaxHealth: 0
+            CurrentHealth: 0
+            Speed: 0
+            Attack: 0
+            Defense: 0
+            OverWorldPrefab: {fileID: 0}
+            BattlePrefab: {fileID: 0}
     PartyMemberNameList: []
     BagInfo:
       HumanEquipmentList:
-      - ID: 1
-        CategoryType: 0
+      - No: 3123213
+        ID: 1
+        CategoryType: 1
         EquipmentValues:
           Level: 1
           DealthExp: 0
@@ -171,8 +255,9 @@ MonoBehaviour:
           Defense: 0
           OverWorldPrefab: {fileID: 0}
           BattlePrefab: {fileID: 0}
-      - ID: 1
-        CategoryType: 1
+      - No: 33223
+        ID: 1
+        CategoryType: 2
         EquipmentValues:
           Level: 1
           DealthExp: 0
@@ -186,8 +271,9 @@ MonoBehaviour:
           Defense: 5
           OverWorldPrefab: {fileID: 0}
           BattlePrefab: {fileID: 0}
-      - ID: 1
-        CategoryType: 0
+      - No: 1111
+        ID: 1
+        CategoryType: 1
         EquipmentValues:
           Level: 80
           DealthExp: 0
@@ -409,6 +495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bagUI: {fileID: 3112774350284786763}
+  equipmentUI: {fileID: 8027574391273422425}
 --- !u!1 &6873724394643501130
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,6 +527,7 @@ Transform:
   m_Children:
   - {fileID: 7940963805238874095}
   - {fileID: 674874471156917688}
+  - {fileID: 1630781635648143130}
   m_Father: {fileID: 2801660778360002689}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7147291189134855107
@@ -474,6 +562,70 @@ Transform:
   - {fileID: 4541683418252765907}
   m_Father: {fileID: 2801660778360002689}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7353637080386365218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1630781635648143130}
+  - component: {fileID: 8027574391273422425}
+  - component: {fileID: 4017110880278302945}
+  m_Layer: 0
+  m_Name: EquipmentUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1630781635648143130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7353637080386365218}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 808862340405818633}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8027574391273422425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7353637080386365218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: d6a6d7fbfb527a84bae3fa263288d6f0, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: 646d76afd0001c74298bc5339c8d2c1b, type: 3}
+  m_SortingOrder: 1004
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+--- !u!114 &4017110880278302945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7353637080386365218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e85fcffa85932bb42bc87bb6d33e00e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9037290112714488203
 GameObject:
   m_ObjectHideFlags: 0

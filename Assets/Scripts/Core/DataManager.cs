@@ -20,6 +20,9 @@ public class DataManager : MonoBehaviour
     [SerializeField]
     public TextAsset CharacterTextAsset;
     [SerializeField]
+    public TextAsset HumanEquipmentTextAsset;
+
+    [SerializeField]
     public GameGlobalData gameGlobalData;
 
 
@@ -31,6 +34,7 @@ public class DataManager : MonoBehaviour
         CharacterParseResult cRes = CharacterInfoParser.BuildCharacterInfoMap(CharacterTextAsset);
         gameGlobalData.PlayerInfo = cRes.Player;
         gameGlobalData.CharacterInfoMap = cRes.CharacterMap;
+        gameGlobalData.HumanEquipmentMap = EquipmentParser.BuildHumanEquipmemtMap(HumanEquipmentTextAsset);
     }
 
     public ChatSection GetChatSectionByNameAndGroup(string name, string group = "default")
@@ -112,6 +116,7 @@ public class CharacterEntity
     public BattleBasicInfos info;
     public Vector3 Position;
     public string Scene;
+    public CharacterEquipment Equipment;
 
     public CharacterEntity() { }
 
@@ -127,6 +132,7 @@ public class CharacterEntity
         info = new BattleBasicInfos(other.info);
         Position = new Vector3(other.Position.x, other.Position.y, other.Position.z);
         Scene = other.Scene;
+        Equipment = new CharacterEquipment(other.Equipment);
     }
 
     public CharacterEntity DeepCopy()
@@ -152,6 +158,8 @@ public class GameGlobalData
     public Dictionary<int, long> LevelExpMap;
     // 怪物信息表
     public Dictionary<string, CharacterEntity> MonsterInfoMap;
+    // 人类装备字典
+    public Dictionary<string, HumanEquipmentEntity> HumanEquipmentMap;
     // 背包信息
     public BagEntity BagInfo;
 }

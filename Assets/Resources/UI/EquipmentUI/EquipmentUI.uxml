@@ -1,0 +1,33 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/EquipmentUI/EquipmentUI.uss?fileID=7433441132597879392&amp;guid=e453fe9434bd04346a3a99ac5f334236&amp;type=3#EquipmentUI" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; background-color: rgb(0, 0, 0); flex-direction: row; color: rgb(255, 255, 255); -unity-font-definition: url(&quot;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#LegacyRuntime&quot;);">
+        <ui:VisualElement name="Pic" style="flex-grow: 0; flex-basis: auto; width: 700px; background-image: resource(&apos;Sprites/Characters/Laya/Laya-BigPic&apos;); -unity-background-scale-mode: scale-to-fit;" />
+        <ui:VisualElement name="Content" style="flex-grow: 1;">
+            <ui:VisualElement name="EquipmentSection" style="flex-grow: 0; flex-direction: row; flex-shrink: 0; flex-basis: 50%;">
+                <ui:VisualElement name="CurrentEquipment" class="listCard" style="flex-grow: 1; flex-basis: 50%;">
+                    <ui:VisualElement name="Title" class="contentTitle">
+                        <ui:Label text="当前装备" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="ListContainer" style="flex-grow: 1;">
+                        <ui:ScrollView name="ScrollList" class="scrollList">
+                            <ui:VisualElement name="ItemWrapper" style="flex-grow: 1;">
+                                <EquipListItemComponent tag="武器:" name="武器名字" />
+                            </ui:VisualElement>
+                        </ui:ScrollView>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement name="EquipmentInBag" class="listCard" style="flex-grow: 1; flex-basis: 50%;">
+                    <ui:VisualElement name="Title" class="contentTitle">
+                        <ui:Label text="背包" />
+                    </ui:VisualElement>
+                    <ui:VisualElement name="ListContainer" style="flex-grow: 1;">
+                        <ui:ScrollView style="flex-grow: 1;">
+                            <ui:VisualElement name="BagEquipListWrapper" style="flex-grow: 1;" />
+                        </ui:ScrollView>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement name="InfoSection" style="flex-grow: 0; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); flex-shrink: 0; flex-basis: 50%;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

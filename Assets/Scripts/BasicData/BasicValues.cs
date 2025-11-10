@@ -15,4 +15,20 @@ public class BasicValues
     public int Defense;
     public GameObject OverWorldPrefab;
     public GameObject BattlePrefab;
+
+    public BasicValues() { }
+
+    public BasicValues(BasicValues other)
+    {
+        Level = other.Level;
+        DealthExp = other.DealthExp;
+        CurrentExp = other.CurrentExp;
+        Name = other.Name;
+        Description = other.Description;
+        MaxHealth = other.MaxHealth;
+        CurrentHealth = other.CurrentHealth;
+        Speed = other.Speed;
+        Attack = other.Attack;
+        Defense = other.Defense;
+    }
 }

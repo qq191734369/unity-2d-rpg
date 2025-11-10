@@ -57,6 +57,8 @@ public class CharacterInfoParser
                     BattlePrefab = Resources.Load<GameObject>($"Prefabs/Character/{id}/{id}-battle")
                 };
 
+                var equipment = new CharacterEquipment { };
+
                 info.InfoGrowth = new InfoGrowth
                 {
                     Attack = attackGrowth,
@@ -70,6 +72,7 @@ public class CharacterInfoParser
                     classType = classType,
                     race = race,
                     IsPlayer = isPlayer,
+                    Equipment = equipment,
                 };
 
                 res.Add(id, charactorInfo);

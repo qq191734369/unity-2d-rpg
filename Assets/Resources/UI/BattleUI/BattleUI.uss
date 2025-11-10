@@ -103,3 +103,7 @@
     font-size: 53px;
     display: none;
 }
+
+#Container > #BattleInfo > #ScrollInfo > #unity-content-and-vertical-scroll-container > .unity-scroll-view__vertical-scroller {
+    opacity: 0;
+}

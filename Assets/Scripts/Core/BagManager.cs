@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class BagManager : MonoBehaviour
 {
@@ -29,6 +31,16 @@ public class BagManager : MonoBehaviour
         return dataManager.gameGlobalData.BagInfo;
     }
 
+    public List<HumanEquipmentEntity> GetHumanEquipmentListByCategory(HumanEquipmentEntity.Category category)
+    {
+        if (category == HumanEquipmentEntity.Category.None)
+        {
+            return dataManager.gameGlobalData.BagInfo.HumanEquipmentList;
+        }
+
+        return dataManager.gameGlobalData.BagInfo.HumanEquipmentList.Where(d => d.CategoryType == category).ToList();
+    }
+
     // Ìí¼ÓÎïÆ·
     public BagManager AddItem(HumanItemEntity item)
     {
@@ -51,6 +63,11 @@ public class BagManager : MonoBehaviour
 
     public BagManager AddItem(HumanEquipmentEntity item)
     {
+        if (bagEntity.HumanEquipmentList.Find(d => d.No == item.No) != null)
+        {
+            return this;
+        }
+
         bagEntity.HumanEquipmentList.Add(item);
         return this;
     }
@@ -84,7 +101,11 @@ public class BagManager : MonoBehaviour
 
     public BagManager RemoveItem(HumanEquipmentEntity item)
     {
-        bagEntity.HumanEquipmentList.Remove(item);
+        if (bagEntity.HumanEquipmentList.Contains(item))
+        {
+            bagEntity.HumanEquipmentList.Remove(item);
+        }
+       
         return this;
     }
 }
