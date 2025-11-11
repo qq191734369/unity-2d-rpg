@@ -38,7 +38,7 @@ public class BagManager : MonoBehaviour
             return dataManager.gameGlobalData.BagInfo.HumanEquipmentList;
         }
 
-        return dataManager.gameGlobalData.BagInfo.HumanEquipmentList.Where(d => d.CategoryType == category).ToList();
+        return dataManager.gameGlobalData.BagInfo.HumanEquipmentList.FindAll(d => d.CategoryType == category);
     }
 
     // ÃÌº”ŒÔ∆∑
@@ -101,6 +101,11 @@ public class BagManager : MonoBehaviour
 
     public BagManager RemoveItem(HumanEquipmentEntity item)
     {
+        if (item == null)
+        {
+            return this;
+        }
+
         if (bagEntity.HumanEquipmentList.Contains(item))
         {
             bagEntity.HumanEquipmentList.Remove(item);

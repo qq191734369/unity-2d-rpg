@@ -13,7 +13,7 @@ public partial class UIEnemyItem : VisualElement
         Debug.Log("Create UIEnemyItem with param");
         VisualTreeAsset visualTreeAsset = Resources.Load<VisualTreeAsset>("UI/BattleUI/template/EnemyItem");
         templateContainer = visualTreeAsset.Instantiate();
-        BattleBasicInfos info = enemyBattleVisual.info;
+        BattleBasicInfos info = enemyBattleVisual.entity.info;
         templateContainer.Q<Label>().text = $"Lv {info.Level} : {info.Name}";
 
         Add(templateContainer);

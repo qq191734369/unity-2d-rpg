@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="EquipmentInfoLine" style="flex-grow: 0; flex-direction: row; justify-content: flex-start; flex-shrink: 0; align-items: center;">
+        <ui:Label text="攻击力:" name="Label" />
+        <ui:Label text="1231313" name="Value" />
+    </ui:VisualElement>
+</ui:UXML>

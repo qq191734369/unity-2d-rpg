@@ -52,7 +52,6 @@ public partial class EquipListItemComponent : VisualElement
     }
 
     public HumanEquipmentEntity dataCache;
-    public HumanEquipmentEntity.Category category;
 
     private TemplateContainer templateContainer;
 
@@ -89,7 +88,7 @@ public partial class EquipListItemComponent : VisualElement
 
     public EquipListItemComponent(HumanEquipmentEntity humanEquipmentEntity, string tag, HumanEquipmentEntity.Category category) : this()
     {
-        this.category = category;
+        HumanEquipCategory = category;
         dataCache = humanEquipmentEntity;
         tagElm.text = tag;
 
@@ -103,6 +102,9 @@ public partial class EquipListItemComponent : VisualElement
 
     public EquipListItemComponent(HumanEquipmentEntity humanEquipmentEntity): this()
     {
+        dataCache = humanEquipmentEntity;
+        HumanEquipCategory = humanEquipmentEntity.CategoryType;
+        
         Container2.style.display = DisplayStyle.Flex;
         Container1.style.display = DisplayStyle.None;
 

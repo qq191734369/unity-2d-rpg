@@ -52,7 +52,7 @@ public class BattleManager : MonoBehaviour
 
     private List<BattleVisual> battleQueue = new List<BattleVisual>();
     // 被击败的敌人列表
-    private List<BattleBasicInfos> defeatEnemyList = new List<BattleBasicInfos>();
+    private List<CharacterEntity> defeatEnemyList = new List<CharacterEntity>();
 
     // 避免重复初始化
     private bool inited = false;
@@ -111,7 +111,7 @@ public class BattleManager : MonoBehaviour
         GenerateEnemyEntities();
 
         battleUI = battleUIDocument.GetComponent<BattleUI>().ShowIU(enemyBattleVisualList);
-        battleUI.ShowBattlerLabel(charactorBattleVisualList[currentBattleCharacterIndex].info.Name);
+        battleUI.ShowBattlerLabel(charactorBattleVisualList[currentBattleCharacterIndex].entity.info.Name);
 
         // 选择敌人回调
         battleUI.ActionSelectEnemy += (BattleVisual selectedEnemy) =>
@@ -126,7 +126,7 @@ public class BattleManager : MonoBehaviour
                 currentBattleCharacterIndex++;
 
                 if (currentBattleCharacterIndex < charactorBattleVisualList.Count) {
-                    battleUI.ShowBattlerLabel(charactorBattleVisualList[currentBattleCharacterIndex].info.Name);
+                    battleUI.ShowBattlerLabel(charactorBattleVisualList[currentBattleCharacterIndex].entity.info.Name);
                 }
             }
 
@@ -175,7 +175,7 @@ public class BattleManager : MonoBehaviour
         // 队列按照速度排序
         battleQueue.Sort((a, b) =>
         {
-            return b.info.Speed - a.info.Speed;
+            return b.entity.Speed - a.entity.Speed;
         });
         // 开始回合
         Debug.Log("Start Battle");
@@ -219,7 +219,7 @@ public class BattleManager : MonoBehaviour
         // 重置状态
         ResetBattleStatus();
         battleUI.ShowIU(enemyBattleVisualList);
-        battleUI.ShowBattlerLabel(charactorBattleVisualList[currentBattleCharacterIndex].info.Name);
+        battleUI.ShowBattlerLabel(charactorBattleVisualList[currentBattleCharacterIndex].entity.info.Name);
 
         yield break;
     }
@@ -229,7 +229,7 @@ public class BattleManager : MonoBehaviour
         long exp = 0;
         foreach (var item in defeatEnemyList)
         {
-            exp += item.DealthExp;
+            exp += item.info.DealthExp;
         }
         battleUI.AppendBattleMessage($"获得exp: {exp}");
 
@@ -285,9 +285,12 @@ public class BattleManager : MonoBehaviour
         battleUI.AppendBattleMessage($"逃跑{text}");
         yield return new WaitForSeconds(1);
 
-        // 跳转场景
-        ResetBattleStatus();
-        BackToWorldMap();
+        if (success) {
+            // 跳转场景
+            ResetBattleStatus();
+            BackToWorldMap();
+        }
+
         yield break;
     }
 
@@ -323,7 +326,7 @@ public class BattleManager : MonoBehaviour
         }
         CurrentBattleStatus = BattleManager.BattleActionStatus.InBattle;
 
-        if (current.AttackTarget.info.IsDead)
+        if (current.AttackTarget.entity.info.IsDead)
         {
             BattleVisual newTarget;
             if (current.battlerType == BattleVisual.BattlerType.Enemy)
@@ -337,24 +340,24 @@ public class BattleManager : MonoBehaviour
             if (newTarget != null)
             {
                 current.AttackTarget = newTarget;
-                battleUI.AppendBattleMessage($"{current.AttackTarget.info.Name}死亡, 随机更换目标 {newTarget.info.Name}");
+                battleUI.AppendBattleMessage($"{current.AttackTarget.entity.info.Name}死亡, 随机更换目标 {newTarget.entity.info.Name}");
             }
             else
             {
-                battleUI.AppendBattleMessage($"{current.AttackTarget.info.Name}死亡, 无攻击目标");
+                battleUI.AppendBattleMessage($"{current.AttackTarget.entity.info.Name}死亡, 无攻击目标");
             }
         }
 
         AttackInfo attackInfo = current.instance.GetComponent<CanAttack>().Attack(current);
         battleUI.AppendBattleMessage($"{attackInfo.CurrentName} 攻击 {attackInfo.TargetName}, 造成伤害 {attackInfo.Damage}");
 
-        if (current.AttackTarget.info.CurrentHealth <= 0)
+        if (current.AttackTarget.entity.info.CurrentHealth <= 0)
         {
             battleUI.AppendBattleMessage($"{attackInfo.TargetName} 被击败");
             if (current.AttackTarget.battlerType == BattleVisual.BattlerType.Enemy)
             {
                 enemyBattleVisualList.Remove(current.AttackTarget);
-                defeatEnemyList.Add(current.AttackTarget.info);
+                defeatEnemyList.Add(current.AttackTarget.entity);
             }
             else
             {
@@ -394,11 +397,11 @@ public class BattleManager : MonoBehaviour
             instance.GetComponent<SpriteRenderer>().sortingLayerName = "BattleScene";
             instance.GetComponent<SpriteRenderer>().sortingOrder = 1;
             instance.transform.SetParent(visualSlot.transform);
-            instance.GetComponent<CanBeAttacked>()?.SetBasicInfo(character);
+            instance.GetComponent<CanBeAttacked>()?.SetBasicInfo(partyMembers[i]);
             charactorBattleVisualList.Add(new BattleVisual
             {
                 battlerType = BattleVisual.BattlerType.Character,
-                info = character,
+                entity = partyMembers[i],
                 instance = instance
             });
         }
@@ -422,11 +425,11 @@ public class BattleManager : MonoBehaviour
             instance.GetComponent<SpriteRenderer>().sortingLayerName = "BattleScene";
             instance.GetComponent<SpriteRenderer>().sortingOrder = 1;
             instance.transform.SetParent(visualSlot.transform);
-            instance.GetComponent<CanBeAttacked>()?.SetBasicInfo(enemy);
+            instance.GetComponent<CanBeAttacked>()?.SetBasicInfo(enemyList[i]);
             enemyBattleVisualList.Add(new BattleVisual
             {
                 battlerType = BattleVisual.BattlerType.Enemy,
-                info = enemy,
+                entity = enemyList[i],
                 instance = instance
             });
         }
@@ -438,7 +441,7 @@ public class BattleManager : MonoBehaviour
 public class BattleVisual
 {
     public BattlerType battlerType;
-    public BattleBasicInfos info;
+    public CharacterEntity entity;
     public GameObject instance;
 
     public BattleVisual AttackTarget;

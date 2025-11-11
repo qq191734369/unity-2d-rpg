@@ -118,6 +118,47 @@ public class CharacterEntity
     public string Scene;
     public CharacterEquipment Equipment;
 
+    public int Attack
+    {
+        get
+        {
+            return info.Attack + Equipment.Attack;
+        }
+    }
+
+    public int Defense
+    {
+        get
+        {
+            return info.Defense + Equipment.Defense;
+        }
+    }
+
+    public int Speed
+    {
+        get
+        {
+            return info.Speed + Equipment.Speed;
+        }
+    }
+
+    public int MaxHealth
+    {
+        get
+        {
+            return info.MaxHealth + Equipment.MaxHealth;
+        }
+    }
+
+    public int CurrentHealth
+    {
+        get
+        {
+            return info.CurrentHealth;
+        }
+    }
+
+
     public CharacterEntity() { }
 
     public CharacterEntity(CharacterEntity other)

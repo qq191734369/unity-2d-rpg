@@ -4,15 +4,15 @@ public class CanBeAttacked : MonoBehaviour
 {
     private BattleHealthBar healthBarScript;
 
-    private BattleBasicInfos basicInfos;
+    private CharacterEntity characterEntity;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         healthBarScript = gameObject.GetComponentInChildren<BattleHealthBar>();
-        if (basicInfos != null)
+        if (characterEntity != null)
         {
-            UpdateHealthBar(basicInfos.CurrentHealth, basicInfos.MaxHealth);
+            UpdateHealthBar(characterEntity.info.CurrentHealth, characterEntity.MaxHealth);
         }
     }
 
@@ -31,8 +31,8 @@ public class CanBeAttacked : MonoBehaviour
         healthBarScript?.UpdateHealthBar(current, total);
     }
 
-    public void SetBasicInfo(BattleBasicInfos battleBasicInfos)
+    public void SetBasicInfo(CharacterEntity entity)
     {
-        basicInfos = battleBasicInfos;
+        characterEntity = entity;
     }
 }

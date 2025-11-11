@@ -284,7 +284,23 @@ MonoBehaviour:
           CurrentHealth: 100
           Speed: 0
           Attack: 100
-          Defense: 5
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+      - No: 43343
+        ID: 5443
+        CategoryType: 2
+        EquipmentValues:
+          Level: 1
+          DealthExp: 0
+          CurrentExp: 0
+          Name: "\u94C1\u5934\u76D4"
+          Description: "\u519B\u7528\u5934\u76D4"
+          MaxHealth: 10
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 0
+          Defense: 10
           OverWorldPrefab: {fileID: 0}
           BattlePrefab: {fileID: 0}
       HumanItemList: []
