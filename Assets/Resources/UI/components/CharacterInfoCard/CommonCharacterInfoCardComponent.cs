@@ -23,6 +23,9 @@ public partial class CommonCharacterInfoCardComponent : VisualElement
 
     public CommonCharacterInfoCardComponent(CharacterEntity characterEntity, HumanEquipmentEntity humanEquipmentEntity = null) : this()
     {
+        if (characterEntity == null) {
+            return;
+        }
         var info = characterEntity.info;
         nameElm.text = info.Name;
         levelElm.text = $"Lv: {info.Level}";

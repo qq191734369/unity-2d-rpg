@@ -32,7 +32,7 @@ public class CharacterSelectorUI : MonoBehaviour,IUIBase
 
     public CharacterSelectorUI() { }
 
-    public static CharacterSelectorUI Create(List<CharacterEntity> memberList, string message = "")
+    public static CharacterSelectorUI Create(List<CharacterEntity> memberList, string message = "", string extra = null)
     {
         GameObject gameObject = new GameObject("dynamic ui - CharacterSelectorUI");
         gameObject.transform.position = new Vector3(0, 0, 0);
@@ -66,6 +66,12 @@ public class CharacterSelectorUI : MonoBehaviour,IUIBase
         foreach (CharacterEntity member in memberList)
         {
             CharacterItemUI itemUI = new CharacterItemUI(member);
+            listContainer.Add(itemUI);
+            itemList.Add(itemUI);
+        }
+        if (extra != null)
+        {
+            CharacterItemUI itemUI = new CharacterItemUI(extra);
             listContainer.Add(itemUI);
             itemList.Add(itemUI);
         }

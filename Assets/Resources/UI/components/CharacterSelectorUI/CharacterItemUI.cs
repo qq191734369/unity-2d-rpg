@@ -12,25 +12,30 @@ public partial class CharacterItemUI : VisualElement
     private Label nameLabel;
     private VisualElement avartarElm;
 
-    public CharacterItemUI() { }
-
-    public CharacterItemUI(CharacterEntity characterEntity)
-    {
-        dataCache = characterEntity;
-        var info = characterEntity.info;
-
+    public CharacterItemUI() {
         VisualTreeAsset visualTreeAsset = Resources.Load<VisualTreeAsset>("UI/components/CharacterSelectorUI/CharacterItemUI");
-        Texture2D avartar = ResourceUtil.GetCharacterAvartar<Texture2D>(characterEntity);
         templateContainer = visualTreeAsset.Instantiate();
 
         nameLabel = templateContainer.Q<Label>("Name");
         avartarElm = templateContainer.Q("Avartar");
 
-        avartarElm.style.backgroundImage = avartar;
-
-        nameLabel.text = info.Name;
-
         Add(templateContainer);
+    }
+
+    public CharacterItemUI(CharacterEntity characterEntity): this()
+    {
+        dataCache = characterEntity;
+        var info = characterEntity.info;
+
+        Texture2D avartar = ResourceUtil.GetCharacterAvartar<Texture2D>(characterEntity);
+
+        avartarElm.style.backgroundImage = avartar;
+        nameLabel.text = info.Name;
+    }
+
+    public CharacterItemUI(string text) : this()
+    {
+        nameLabel.text = text;
     }
 
     public void SetActive(bool value)

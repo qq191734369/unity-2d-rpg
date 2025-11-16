@@ -56,7 +56,7 @@ public class EquipmentParser
                 return HumanEquipmentEntity.Category.Head;
             case "Body":
                 return HumanEquipmentEntity.Category.Body;
-            case "Shoe":
+            case "Shoes":
                 return HumanEquipmentEntity.Category.Shoes;
             default:
                 return HumanEquipmentEntity.Category.None;

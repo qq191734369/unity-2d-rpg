@@ -82,15 +82,16 @@ public partial class CommonCharacterInfoCardLineComponent : VisualElement
         }
         else
         {
-            int v = int.Parse(value);
-            int tv = int.Parse(targetValue);
+            int currentNum = int.Parse(value);
+            int targetNum = int.Parse(targetValue);
+            int delta = currentNum - targetNum;
 
-            if (v -  tv < 0)
-            {
-                targetValueElm.AddToClassList(DOWN_CLASS);
-            } else
+            if (delta < 0)
             {
                 targetValueElm.AddToClassList(UP_CLASS);
+            } else if (delta > 0)
+            {
+                targetValueElm.AddToClassList(DOWN_CLASS);
             }
         }
     }

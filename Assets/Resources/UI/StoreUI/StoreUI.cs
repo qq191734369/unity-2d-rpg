@@ -13,6 +13,7 @@ public class StoreUI : MonoBehaviour,IUIBase
     private HumanEquipmentSystem humanEquipmentSystem;
     private DataManager dataManager;
     private PartyManager partyManager;
+    private BagManager bagManager;
 
     private List<HumanEquipmentEntity> humanEquipmentEntities = new List<HumanEquipmentEntity>();
     private List<StoreItemComponent> storeItems = new List<StoreItemComponent>();
@@ -46,6 +47,7 @@ public class StoreUI : MonoBehaviour,IUIBase
         humanEquipmentSystem = gameManagerObj.GetComponent<HumanEquipmentSystem>();
         dataManager = gameManagerObj.GetComponent<DataManager>();
         partyManager = gameManagerObj.GetComponent<PartyManager>();
+        bagManager = gameManagerObj.GetComponent<BagManager>();
     }
 
     private IEnumerator InitCoroutine()
@@ -145,22 +147,29 @@ public class StoreUI : MonoBehaviour,IUIBase
         }
         Debug.Log("Store UI Press X");
         var selectedEquipId = storeItems[activeSelectedIndex].HumanEquipmentCache.ID;
-        var instance = CharacterSelectorUI.Create(partyManager.AllMembers, "给谁装备？");
+        var instance = CharacterSelectorUI.Create(partyManager.AllMembers, "给谁装备？", "背包");
         instance.OnSelect += (CharacterEntity entity) =>
         {
-            Debug.Log("选择角色" + $"{entity.info.Name}");
             var newEquip = humanEquipmentSystem.GetHumanEquipmentById(selectedEquipId);
-            humanEquipmentSystem.Equip(entity, newEquip);
+            if (entity == null)
+            {
+                bagManager.AddItem(newEquip);
+            }
+            else
+            {
+                humanEquipmentSystem.Equip(entity, newEquip);
+            }
+
             instance.Close();
         };
         instance.OnChange += (CharacterEntity entity) =>
         {
-            if (activeSelectedIndex == -1)
+            characterInfoElm.Clear();
+            if (activeSelectedIndex == -1 || entity == null)
             {
                 return;
             }
             var equipment = storeItems[activeSelectedIndex]?.HumanEquipmentCache;
-            characterInfoElm.Clear();
             characterInfoElm.Add(new CommonCharacterInfoCardComponent(entity, equipment));
         };
         instance.OnDestroy += () =>
