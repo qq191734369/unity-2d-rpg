@@ -8,10 +8,14 @@ public class CharacterSelectorUI : MonoBehaviour,IUIBase
     const int SORTING_ORDER = 1003;
 
     public event System.Action<CharacterEntity> OnSelect;
+    public event System.Action<CharacterEntity> OnChange;
+    public event System.Action OnDestroy;
 
     public UIDocument uiDocument;
     public VisualElement templateContainer;
+    public VisualElement listContainer;
     public List<CharacterItemUI> itemList = new List<CharacterItemUI>();
+    public Label messageLabel;
 
     public bool isActive = false;
 
@@ -28,12 +32,13 @@ public class CharacterSelectorUI : MonoBehaviour,IUIBase
 
     public CharacterSelectorUI() { }
 
-    public static CharacterSelectorUI Create(List<CharacterEntity> memberList)
+    public static CharacterSelectorUI Create(List<CharacterEntity> memberList, string message = "")
     {
         GameObject gameObject = new GameObject("dynamic ui - CharacterSelectorUI");
         gameObject.transform.position = new Vector3(0, 0, 0);
         gameObject.transform.rotation = Quaternion.identity;
 
+        // 初始化模版
         var uiDocument = gameObject.AddComponent<UIDocument>();
         PanelSettings panelSettings = Resources.Load<PanelSettings>("Settings/UI Toolkit/PanelSettings");
         VisualTreeAsset visualTreeAsset = Resources.Load<VisualTreeAsset>("UI/components/CharacterSelectorUI/CharacterSelectorUI");
@@ -41,8 +46,12 @@ public class CharacterSelectorUI : MonoBehaviour,IUIBase
         uiDocument.visualTreeAsset = visualTreeAsset;
         uiDocument.sortingOrder = SORTING_ORDER;
 
+        // 获取元素
         var templateContainer = uiDocument.rootVisualElement.Q<VisualElement>("Container");
-        templateContainer.Clear();
+        var listContainer = templateContainer.Q<VisualElement>("ListContainer");
+        Label messageLabel = templateContainer.Q("Message").Q<Label>("Text");
+        messageLabel.text = message;
+        listContainer.Clear();
 
         CharacterSelectorUI instance = gameObject.AddComponent<CharacterSelectorUI>();
 
@@ -51,18 +60,20 @@ public class CharacterSelectorUI : MonoBehaviour,IUIBase
         instance.uiDocument = uiDocument;
         instance.templateContainer = templateContainer;
         instance.itemList = itemList;
+        instance.messageLabel = messageLabel;
+        instance.listContainer = listContainer;
 
         foreach (CharacterEntity member in memberList)
         {
             CharacterItemUI itemUI = new CharacterItemUI(member);
-            templateContainer.Add(itemUI);
+            listContainer.Add(itemUI);
             itemList.Add(itemUI);
         }
-        itemList[0].SetActive(true);
 
         UIManager.Push(instance);
         // 设置激活状态 用于按键判断
         instance.StartInitCorotine();
+        Debug.Log("Character select created " + $"is on top {UIManager.IsOnTop(instance)}");
 
         return instance;
     }
@@ -76,12 +87,21 @@ public class CharacterSelectorUI : MonoBehaviour,IUIBase
     {
         yield return new WaitForSecondsRealtime(0.1f);
         isActive = true;
+        SetActiveBtn(0);
+    }
+
+    private IEnumerator CloseCoroutine()
+    {
+        yield return new WaitForSecondsRealtime(0.1f);
+        UIManager.Pop(this);
+        Destroy(gameObject);
     }
 
     public void Close()
     {
-        UIManager.Pop(this);
-        Destroy(gameObject);
+        StartCoroutine(CloseCoroutine());
+        isActive = false;
+        OnDestroy?.Invoke();
     }
 
     private void SetActiveBtn(int index)
@@ -90,6 +110,8 @@ public class CharacterSelectorUI : MonoBehaviour,IUIBase
         itemList.ForEach(d => d.SetActive(false));
         activeIndex = targetIndex;
         itemList[activeIndex].SetActive(true);
+
+        OnChange?.Invoke(itemList[activeIndex].dataCache);
     }
 
     private void Update()

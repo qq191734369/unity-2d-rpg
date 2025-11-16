@@ -31,15 +31,19 @@ public class InteractableObject : MonoBehaviour
 
     private void InitCharacterInfo()
     {
+        // 先找角色信息
         CharacterInfo = dataManager.GetCharacterByName(Name);
-        if (CharacterInfo == null)
+        if (CharacterInfo != null)
         {
+            if (partyManager.HasJoinedParty(CharacterInfo))
+            {
+                gameObject.SetActive(false);
+            }
             return;
         }
-        if (partyManager.HasJoinedParty(CharacterInfo))
-        {
-            gameObject.SetActive(false);
-        }
+
+        // 查找怪物信息
+        CharacterInfo = dataManager.GetMonsterInfoByName(Name);
     }
 
     public ChatSection GetCurrentChatSection()

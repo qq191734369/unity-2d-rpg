@@ -52,7 +52,9 @@ public class MonsterInfoParser
                     Speed = 0
                 };
 
-                var charactorInfo = new CharacterEntity();
+                var charactorInfo = new CharacterEntity {
+                    Id = id
+                };
                 charactorInfo.info = info;
 
                 keyValuePairs.Add(id, charactorInfo);

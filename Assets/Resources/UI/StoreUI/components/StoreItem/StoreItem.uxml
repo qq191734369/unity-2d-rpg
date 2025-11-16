@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/StoreUI/components/StoreItem/StoreItem.uss?fileID=7433441132597879392&amp;guid=3ee33ba197ce6b544a18ea11066cfff3&amp;type=3#StoreItem" />
+    <ui:VisualElement name="StoreEuipmentItem" style="flex-grow: 0; flex-direction: row; justify-content: space-between;">
+        <ui:Label text="物品" name="Name" />
+        <ui:Label text="价钱" name="Price" />
+    </ui:VisualElement>
+</ui:UXML>

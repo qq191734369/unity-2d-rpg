@@ -1,0 +1,11 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/UI/components/CharacterInfoCard/CharacterInfoLine.uss?fileID=7433441132597879392&amp;guid=c068618ebf1cbeb459dc699d21b15c88&amp;type=3#CharacterInfoLine" />
+    <ui:VisualElement name="CharacterInfoLine" style="flex-grow: 1; flex-direction: row;">
+        <ui:Label text="攻击力:" name="ValueName" style="flex-grow: 1;" />
+        <ui:VisualElement name="ValueContent" style="flex-grow: 0; flex-direction: row; justify-content: space-between;">
+            <ui:Label text="123" name="CurrentValue" style="padding-right: 8px;" />
+            <ui:Label text="→" name="Icon" />
+            <ui:Label text="55" name="TargetValue" style="padding-left: 8px;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -17,10 +17,7 @@ public partial class CharacterCard : VisualElement
     Label NextExp;
     Label CurrentExp;
 
-    public CharacterCard() { }
-
-    public CharacterCard(CharacterEntity characterEntity)
-    {
+    public CharacterCard() {
         VisualTreeAsset visualTreeAsset = Resources.Load<VisualTreeAsset>("UI/components/CharacterCard/CharacterCard");
         templateContainer = visualTreeAsset.Instantiate();
 
@@ -32,9 +29,12 @@ public partial class CharacterCard : VisualElement
         NextExp = templateContainer.Q<Label>("NextExp");
         CurrentExp = templateContainer.Q<Label>("CurrentExp");
 
-        UpdateData(characterEntity);
-
         Add(templateContainer);
+    }
+
+    public CharacterCard(CharacterEntity characterEntity) : this()
+    {
+        UpdateData(characterEntity);
     }
 
     public CharacterCard UpdateData(CharacterEntity characterEntity)
@@ -44,9 +44,9 @@ public partial class CharacterCard : VisualElement
 
         Name.text = name;
         Level.text = $"等级: {info.Level}";
-        HealthNum.text = $"{info.CurrentHealth}/{info.MaxHealth}";
-        CurrentHealthBar.style.width = Length.Percent((float)info.CurrentHealth / info.MaxHealth * 100);
-        Texture2D texture2D = Resources.Load<Texture2D>($"Sprites/Characters/{name}/{name}-Avatar");
+        HealthNum.text = $"{characterEntity.CurrentHealth}/{characterEntity.MaxHealth}";
+        CurrentHealthBar.style.width = Length.Percent((float)characterEntity.CurrentHealth / characterEntity.MaxHealth * 100);
+        Texture2D texture2D = ResourceUtil.GetCharacterAvartar<Texture2D>(characterEntity);
         Avartar.style.backgroundImage = new StyleBackground(texture2D);
 
         // 计算下一级经验

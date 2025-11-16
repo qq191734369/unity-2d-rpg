@@ -1,5 +1,69 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &575583204499027606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8686547215027813491}
+  - component: {fileID: 6122310788039537143}
+  - component: {fileID: 1765921068245518678}
+  m_Layer: 5
+  m_Name: StoreUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8686547215027813491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575583204499027606}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 808862340405818633}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6122310788039537143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575583204499027606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: d6a6d7fbfb527a84bae3fa263288d6f0, type: 2}
+  m_ParentUI: {fileID: 0}
+  sourceAsset: {fileID: 9197481963319205126, guid: b9a65ec4e971caa42b860b5e744df59a, type: 3}
+  m_SortingOrder: 1000
+  m_WorldSpaceSizeMode: 1
+  m_WorldSpaceWidth: 1920
+  m_WorldSpaceHeight: 1080
+--- !u!114 &1765921068245518678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575583204499027606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eee70beeff51524f849d3ee588c0454, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2188272183669050599
 GameObject:
   m_ObjectHideFlags: 0
@@ -81,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainUIDocument: {fileID: 6320897539601701446}
   ChatUIDocument: {fileID: 495632403124001073}
+  StoreUIDocument: {fileID: 6122310788039537143}
 --- !u!114 &4612488909024434898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,8 +212,10 @@ MonoBehaviour:
   MonsterInfoTextAsset: {fileID: 4900000, guid: 0b7374da4a4b65c4caad782af48baf1b, type: 3}
   CharacterTextAsset: {fileID: 4900000, guid: 262c02d5114dbba4a8a0c8e4d2306a4a, type: 3}
   HumanEquipmentTextAsset: {fileID: 4900000, guid: 5baa394a58a63d645a739f72c5cb2a28, type: 3}
+  StoreTextAsset: {fileID: 4900000, guid: 8105bc779f713714aa82ac3603e8f311, type: 3}
   gameGlobalData:
     PlayerInfo:
+      Id: 
       IsPlayer: 0
       race: 0
       classType: 1
@@ -185,6 +252,7 @@ MonoBehaviour:
             Defense: 0
             OverWorldPrefab: {fileID: 0}
             BattlePrefab: {fileID: 0}
+          Price: 0
         Head:
           No: 
           ID: 
@@ -202,6 +270,7 @@ MonoBehaviour:
             Defense: 0
             OverWorldPrefab: {fileID: 0}
             BattlePrefab: {fileID: 0}
+          Price: 0
         Body:
           No: 
           ID: 
@@ -219,6 +288,7 @@ MonoBehaviour:
             Defense: 0
             OverWorldPrefab: {fileID: 0}
             BattlePrefab: {fileID: 0}
+          Price: 0
         Shoe:
           No: 
           ID: 
@@ -236,8 +306,10 @@ MonoBehaviour:
             Defense: 0
             OverWorldPrefab: {fileID: 0}
             BattlePrefab: {fileID: 0}
+          Price: 0
     PartyMemberNameList: []
     BagInfo:
+      Gold: 0
       HumanEquipmentList:
       - No: 3123213
         ID: 1
@@ -255,6 +327,7 @@ MonoBehaviour:
           Defense: 0
           OverWorldPrefab: {fileID: 0}
           BattlePrefab: {fileID: 0}
+        Price: 0
       - No: 33223
         ID: 1
         CategoryType: 2
@@ -271,6 +344,7 @@ MonoBehaviour:
           Defense: 5
           OverWorldPrefab: {fileID: 0}
           BattlePrefab: {fileID: 0}
+        Price: 0
       - No: 1111
         ID: 1
         CategoryType: 1
@@ -287,6 +361,7 @@ MonoBehaviour:
           Defense: 0
           OverWorldPrefab: {fileID: 0}
           BattlePrefab: {fileID: 0}
+        Price: 0
       - No: 43343
         ID: 5443
         CategoryType: 2
@@ -303,6 +378,143 @@ MonoBehaviour:
           Defense: 10
           OverWorldPrefab: {fileID: 0}
           BattlePrefab: {fileID: 0}
+        Price: 0
+      - No: 556676655
+        ID: 5443
+        CategoryType: 1
+        EquipmentValues:
+          Level: 1
+          DealthExp: 0
+          CurrentExp: 0
+          Name: "\u5C0F\u5200"
+          Description: "\u4E00\u628A\u5200\u7F62\u4E86"
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 20
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+        Price: 0
+      - No: 997654
+        ID: 645645635
+        CategoryType: 1
+        EquipmentValues:
+          Level: 1
+          DealthExp: 0
+          CurrentExp: 0
+          Name: "\u957F\u5200"
+          Description: "\u4E00\u628A\u957F\u5200"
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 25
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+        Price: 0
+      - No: 878787
+        ID: 23334345
+        CategoryType: 1
+        EquipmentValues:
+          Level: 1
+          DealthExp: 0
+          CurrentExp: 0
+          Name: "\u51B2\u950B\u67AA"
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 30
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+        Price: 0
+      - No: 5555
+        ID: 3435345345
+        CategoryType: 1
+        EquipmentValues:
+          Level: 1
+          DealthExp: 0
+          CurrentExp: 0
+          Name: AK-47
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 31
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+        Price: 0
+      - No: 66545654
+        ID: 657456456
+        CategoryType: 1
+        EquipmentValues:
+          Level: 1
+          DealthExp: 0
+          CurrentExp: 0
+          Name: SCAR
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 33
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+        Price: 0
+      - No: 564554
+        ID: 45645645
+        CategoryType: 1
+        EquipmentValues:
+          Level: 1
+          DealthExp: 0
+          CurrentExp: 0
+          Name: SCAR
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 33
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+        Price: 0
+      - No: 56544555
+        ID: 87767676
+        CategoryType: 1
+        EquipmentValues:
+          Level: 1
+          DealthExp: 0
+          CurrentExp: 0
+          Name: SCAR
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 33
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+        Price: 0
+      - No: 54454565
+        ID: 875636
+        CategoryType: 1
+        EquipmentValues:
+          Level: 1
+          DealthExp: 0
+          CurrentExp: 0
+          Name: SCAR
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 33
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+        Price: 0
       HumanItemList: []
 --- !u!114 &8843826754749453712
 MonoBehaviour:
@@ -544,6 +756,7 @@ Transform:
   - {fileID: 7940963805238874095}
   - {fileID: 674874471156917688}
   - {fileID: 1630781635648143130}
+  - {fileID: 8686547215027813491}
   m_Father: {fileID: 2801660778360002689}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7147291189134855107

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class UIManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class UIManager : MonoBehaviour
     public UIDocument MainUIDocument;
     [SerializeField]
     public UIDocument ChatUIDocument;
+    [SerializeField]
+    public UIDocument StoreUIDocument;
 
     [Header("Debug")]
     public static Stack<Object> UIStack = new Stack<Object>();
@@ -27,6 +30,15 @@ public class UIManager : MonoBehaviour
             return false;
         }
         return UIStack.Peek().Equals(uiInstance);
+    }
+
+    public static bool Contains(Object uiInstance)
+    {
+        if (UIStack.Count == 0)
+        {
+            return false;
+        }
+        return UIStack.Contains(uiInstance);
     }
 
     // 是否有交互UI激活
@@ -80,6 +92,15 @@ public class UIManager : MonoBehaviour
         return null;
     }
 
+    static public void ClearAll()
+    {
+        while (UIStack.Count > 0)
+        {
+            var ui = UIStack.Pop() as IUIBase;
+            ui.Close();
+        }
+    }
+
     private void OnEnable()
     {
         
@@ -93,12 +114,13 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.C)) {
+            if (SceneLoader.IsInBattle)
+            {
+                return;
+            }
             if (UIStack.Count > 0)
             {
-                while (UIStack.Count > 0) {
-                    var ui = UIStack.Pop() as IUIBase;
-                    ui.Close();
-                }
+                ClearAll();
             } else
             {
                 if (IsChating)

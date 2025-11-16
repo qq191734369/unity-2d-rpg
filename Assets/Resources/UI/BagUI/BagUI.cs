@@ -121,6 +121,8 @@ public class BagUI : MonoBehaviour, IUIBase
         UIManager.Push(this);
 
         uIDocument.rootVisualElement.style.display = DisplayStyle.Flex;
+        // 清空详情展示
+        detailContainer.Clear();
 
         activeCategoryIndex = 0;
         RenderCategoryByType();

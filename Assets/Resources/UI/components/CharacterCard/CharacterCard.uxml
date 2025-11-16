@@ -1,11 +1,11 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/Resources/UI/MainMenu/MainMenu.uss?fileID=7433441132597879392&amp;guid=faaa61ffc80cd7c469cbc86a90a67d33&amp;type=3#MainMenu" />
-    <ui:VisualElement name="CharacterCard" class="characterCard" style="border-left-color: rgb(192, 192, 192); border-right-color: rgb(192, 192, 192); border-top-color: rgb(192, 192, 192); border-bottom-color: rgb(192, 192, 192); -unity-font-definition: url(&quot;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#LegacyRuntime&quot;);">
+    <ui:VisualElement name="CharacterCard" class="characterCard" style="border-left-color: rgb(192, 192, 192); border-right-color: rgb(192, 192, 192); border-top-color: rgb(192, 192, 192); border-bottom-color: rgb(192, 192, 192); -unity-font-definition: url(&quot;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#LegacyRuntime&quot;); padding-top: 10px; padding-right: 10px; padding-bottom: 10px; padding-left: 10px;">
         <ui:VisualElement name="Avartar" class="Avatar" style="background-color: rgb(255, 255, 255);" />
         <ui:VisualElement name="CardContent" style="flex-grow: 1;">
             <ui:VisualElement name="BasicInfo" style="flex-grow: 0; flex-direction: row; justify-content: space-between; align-items: center; padding-right: 20px;">
                 <ui:Label text="Label" name="CaracterName" class="CharacterName" />
-                <ui:Label text="等级" name="Level" parse-escape-sequences="false" style="font-size: 26px; -unity-font-style: bold; color: rgb(204, 204, 204); -unity-font-definition: url(&quot;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#LegacyRuntime&quot;);" />
+                <ui:Label text="等级" name="Level" parse-escape-sequences="false" style="font-size: 24px; -unity-font-style: bold; color: rgb(204, 204, 204); -unity-font-definition: url(&quot;project://database/Library/unity%20default%20resources?fileID=10102&amp;guid=0000000000000000e000000000000000&amp;type=0#LegacyRuntime&quot;);" />
             </ui:VisualElement>
             <ui:VisualElement name="HealthBar" style="flex-grow: 1;">
                 <ui:Label text="100/100" name="HealNum" style="color: rgb(255, 255, 255); -unity-font-style: bold; font-size: 25px; padding-left: 20px;" />

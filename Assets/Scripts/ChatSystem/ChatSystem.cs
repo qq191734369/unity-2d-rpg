@@ -30,6 +30,7 @@ public class ChatSystem : MonoBehaviour
     private ChatUIScript chatUIScript;
     private DataManager dataManager;
     private UIManager uiManager;
+    private PartyManager partyManager;
 
     private InteractableObject interactableObject;
     private ChatSection currentChatSection;
@@ -42,6 +43,7 @@ public class ChatSystem : MonoBehaviour
         gameManager = GetComponent<GameManager>();
         uiManager = GetComponent<UIManager>();
         dataManager = GetComponent<DataManager>();
+        partyManager = GetComponent<PartyManager>();
 
         chatUIScript = uiManager.ChatUIDocument.GetComponent<ChatUIScript>();
     }
@@ -108,7 +110,27 @@ public class ChatSystem : MonoBehaviour
     {
         contentIndex = 0;
         ShowCurrentContent();
-        Debug.Log($"Show current chat section");
+        ShowAvartar();
+    }
+
+    // 展示头像
+    private void ShowAvartar()
+    {
+        if (currentChatSection == null)
+        {
+            return;
+        }
+
+        var name = currentChatSection.Name;
+        if (name == null)
+        {
+            return;
+        }
+
+        Texture2D img = ResourceUtil.GetCharacterAvartar<Texture2D>(name);
+        // 如果在队伍内，则头像渲染在右侧
+        bool isInParty = partyManager.isInParty(name);
+        chatUIScript.RenderAvatar(img, isInParty ? ChatUIScript.Position.Right : ChatUIScript.Position.Left);
     }
 
     private async Task WaitForSeconds()

@@ -26,7 +26,7 @@
                         <ui:Label text="背包" />
                     </ui:VisualElement>
                     <ui:VisualElement name="ListContainer" style="flex-grow: 1;">
-                        <ui:ScrollView style="flex-grow: 1;">
+                        <ui:ScrollView name="ListScrollView" style="flex-grow: 1;">
                             <ui:VisualElement name="BagEquipListWrapper" style="flex-grow: 1;" />
                         </ui:ScrollView>
                     </ui:VisualElement>

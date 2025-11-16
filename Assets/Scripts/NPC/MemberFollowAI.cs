@@ -32,11 +32,11 @@ public class MemberFollowAI : MonoBehaviour
 
             if (followTarget.position.x - transform.position.x < 0)
             {
-                followRenderer.flipX = false;
+                followRenderer.flipX = true;
             }
             else
             {
-                followRenderer.flipX = true;
+                followRenderer.flipX = false;
             }
         }
         else

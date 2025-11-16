@@ -1,0 +1,7 @@
+.down {
+    color: rgb(255, 0, 0);
+}
+
+.up {
+    color: rgb(0, 178, 4);
+}

@@ -21,6 +21,8 @@ public class DataManager : MonoBehaviour
     public TextAsset CharacterTextAsset;
     [SerializeField]
     public TextAsset HumanEquipmentTextAsset;
+    [SerializeField]
+    public TextAsset StoreTextAsset;
 
     [SerializeField]
     public GameGlobalData gameGlobalData;
@@ -35,10 +37,21 @@ public class DataManager : MonoBehaviour
         gameGlobalData.PlayerInfo = cRes.Player;
         gameGlobalData.CharacterInfoMap = cRes.CharacterMap;
         gameGlobalData.HumanEquipmentMap = EquipmentParser.BuildHumanEquipmemtMap(HumanEquipmentTextAsset);
+        gameGlobalData.StoreItemMap = StoreParser.ParseStore(StoreTextAsset);
     }
 
     public ChatSection GetChatSectionByNameAndGroup(string name, string group = "default")
     {
+        if (!gameGlobalData.ChatDictionary.ContainsKey(name))
+        {
+            return null;
+        }
+
+        if (!gameGlobalData.ChatDictionary[name].groups.ContainsKey(group))
+        {
+            return null;
+        }
+
         return gameGlobalData.ChatDictionary[name].groups[group];
     }
 
@@ -53,7 +66,11 @@ public class DataManager : MonoBehaviour
 
     public CharacterEntity GetMonsterInfoByName(string name)
     {
-        return gameGlobalData.MonsterInfoMap[name]?.DeepCopy();
+        if (gameGlobalData.MonsterInfoMap.ContainsKey(name))
+        {
+            return gameGlobalData.MonsterInfoMap[name]?.DeepCopy();
+        }
+        return null;
     }
 
     public void AddPartyMember(string name)
@@ -83,6 +100,15 @@ public class DataManager : MonoBehaviour
 
         return gameGlobalData.PartyMemberNameList.Select((d) => GetCharacterByName(d)).Where(d => d != null).ToList();
     }
+
+    public StoreInfo GetStoreItemsByKey(string key) {
+        if (gameGlobalData.StoreItemMap.ContainsKey(key))
+        {
+            return gameGlobalData.StoreItemMap[key];
+        }
+
+        return null;
+    }
 }
 
 [System.Serializable]
@@ -110,6 +136,7 @@ public class CharacterEntity
         Dog
     }
 
+    public string Id;
     public bool IsPlayer;
     public Race race;
     public ClassType classType;
@@ -180,7 +207,50 @@ public class CharacterEntity
     {
         return new CharacterEntity(this);
     }
+
+    public CharacterEntity PreviewInfos(HumanEquipmentEntity equipmentEntity)
+    {
+        var charactor = DeepCopy();
+        var equipCopy = equipmentEntity.DeepCopy();
+        switch (equipmentEntity.CategoryType)
+        {
+            case HumanEquipmentEntity.Category.Weapon:
+                charactor.Equipment.Weapon = equipCopy;
+                break;
+            case HumanEquipmentEntity.Category.Head:
+                charactor.Equipment.Head = equipCopy;
+                break;
+            case HumanEquipmentEntity.Category.Body:
+                charactor.Equipment.Body = equipCopy;
+                break;
+            case HumanEquipmentEntity.Category.Shoes:
+                charactor.Equipment.Shoe = equipCopy;
+                break;
+            case HumanEquipmentEntity.Category.None:
+                break;
+        }
+
+        return charactor;
+    }
 }
+
+[System.Serializable]
+public class StoreInfo
+{
+    public enum StoreType
+    {
+        HumanEquip,
+        CarEquip,
+        HumanItem,
+        CarItem
+    }
+
+    public StoreType Type;
+    public string Key;
+    public string Name;
+    public List<string> ItemIds;
+}
+
 
 [System.Serializable]
 public class GameGlobalData
@@ -203,5 +273,7 @@ public class GameGlobalData
     public Dictionary<string, HumanEquipmentEntity> HumanEquipmentMap;
     // 背包信息
     public BagEntity BagInfo;
+    // 商店物品信息
+    public Dictionary<string, StoreInfo> StoreItemMap;
 }
 

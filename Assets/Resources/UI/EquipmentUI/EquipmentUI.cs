@@ -26,6 +26,7 @@ public class EquipmentUI : MonoBehaviour
     private VisualElement currentEquipListWrapperElm;
     private List<EquipListItemComponent> equipListItemComponentList = new List<EquipListItemComponent>();
     // ±³°ü×°±¸
+    private ScrollView bagScrollView;
     private VisualElement bagEquipListWrapperElm;
     private List<EquipListItemComponent> bagListItemComponentList = new List<EquipListItemComponent>();
 
@@ -57,6 +58,7 @@ public class EquipmentUI : MonoBehaviour
         characterInfoSlot = root.Q<VisualElement>("CharacterInfoBanner");
         equiptedInfoElm = root.Q<VisualElement>("EquiptedInfo");
         selectedInfoElm = root.Q<VisualElement>("SelectedInfo");
+        bagScrollView = root.Q<ScrollView>("ListScrollView");
 
         GameManager.OnGameInited(HandleGameInited);
     }
@@ -127,8 +129,7 @@ public class EquipmentUI : MonoBehaviour
 
     private void RenderPic()
     {
-        var info = character.info;
-        characterPicSlot.style.backgroundImage = Resources.Load<Texture2D>($"Sprites/Characters/{info.Name}/{info.Name}-BigPic");
+        characterPicSlot.style.backgroundImage = Resources.Load<Texture2D>($"Sprites/Characters/{character.Id}/{character.Id}-BigPic");
     }
 
     private void RenderCharacterInfo()
@@ -256,7 +257,9 @@ public class EquipmentUI : MonoBehaviour
         bagListItemComponentList?.ForEach(d => d.SetActive(false));
 
         currentBagIndex = targetIndex;
-        bagListItemComponentList[targetIndex].SetActive(true);
+        var item = bagListItemComponentList[targetIndex].SetActive(true);
+
+        bagScrollView.ScrollTo(item);
 
         RenderBagItemInfo();
     }

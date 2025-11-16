@@ -37,7 +37,6 @@ public class SceneLoader : MonoBehaviour
         instance = this;
     }
 
-
     static IEnumerator LoadAddressableSceneCoroutine(
         object key,
         bool showLoading,
@@ -131,6 +130,14 @@ public class SceneLoader : MonoBehaviour
     {
         SceneParams.Remove(BATTLE_SCENE);
         UnloadAddressableSceneCorotine(BattleSceneInstance, UnloadSceneOptions.None);
+    }
+
+    static public bool IsInBattle
+    {
+        get
+        {
+            return SceneManager.GetActiveScene().name == BATTLE_SCENE;
+        }
     }
 }
 

@@ -68,6 +68,7 @@ public class CharacterInfoParser
                 };
 
                 var charactorInfo = new CharacterEntity {
+                    Id = id,
                     info = info,
                     classType = classType,
                     race = race,

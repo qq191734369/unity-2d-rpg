@@ -24,9 +24,12 @@ public class EquipmentParser
                 int defense = int.Parse(cols[6]);
                 int speed  = int.Parse(cols[7]);
 
+                int price = int.Parse(cols[9]);
+
                 HumanEquipmentEntity entity = new HumanEquipmentEntity {
                     ID = id,
                     CategoryType = category,
+                    Price = price,
                     EquipmentValues = new BasicValues
                     {
                         Name = name,

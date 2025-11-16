@@ -20,7 +20,7 @@ public partial class CharacterItemUI : VisualElement
         var info = characterEntity.info;
 
         VisualTreeAsset visualTreeAsset = Resources.Load<VisualTreeAsset>("UI/components/CharacterSelectorUI/CharacterItemUI");
-        Texture2D avartar = Resources.Load<Texture2D>($"Sprites/Characters/{info.Name}/{info.Name}-Avatar");
+        Texture2D avartar = ResourceUtil.GetCharacterAvartar<Texture2D>(characterEntity);
         templateContainer = visualTreeAsset.Instantiate();
 
         nameLabel = templateContainer.Q<Label>("Name");

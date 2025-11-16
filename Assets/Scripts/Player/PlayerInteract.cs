@@ -67,12 +67,14 @@ public class PlayerInteract : MonoBehaviour
                     chatSystem.StartChat(currentInteractable);
                     chatSystem.OnChatDone += HandleChatDone;
                     chatSystem.OnJoinParty += HandleJoinParty;
-                }
-                else
-                {
-                    Debug.Log("No Chat Section");
-                }
 
+                    return;
+                }
+                
+                StoreSystem storeSystem = currentInteractable.gameObject.GetComponent<StoreSystem>();
+                if (storeSystem != null) {
+                    storeSystem.ShowStoreUI();
+                }
             }
             else
             {

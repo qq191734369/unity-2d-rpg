@@ -1,3 +1,4 @@
 ﻿id,name,exp,base_health,base_defense,base_attack,base_speed,health_growth,defense_growth,attack_growth,speed_growth,battle_prefeb,desc,class,is_player,race,equipment
 Laya,Laya,10,200,14,16,10,16,7,8,0,Laya,一位冒险者,Hunter,Y,Human,weapon:10001-head:10002-body:10003-shoe:10004
 Tina,Tina,10,200,20,19,12,20,9,9,0,Tina,一位战士,Warrior,,Human,
+YuNa,允娜,10,200,20,19,12,20,9,9,0,YuNa,古代村的战士,Warrior,,Human,

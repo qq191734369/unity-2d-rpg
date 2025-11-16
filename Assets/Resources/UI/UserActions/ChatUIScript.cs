@@ -10,10 +10,18 @@ public class ChatUIScript : MonoBehaviour
     public bool isActive = false;
     public bool isSelectingOptions = false;
 
+    public enum Position
+    {
+        Left,
+        Right
+    }
+
     public System.Action<ChatOption> OnConfirm;
 
     UIDocument uiDocument;
     VisualElement Container;
+    VisualElement avartarLeft;
+    VisualElement avartarRight;
 
     private ChatOptions optionsElement;
 
@@ -21,6 +29,8 @@ public class ChatUIScript : MonoBehaviour
     {
         uiDocument = GetComponent<UIDocument>();
         Container = uiDocument.rootVisualElement.Q("Bg");
+        avartarLeft = uiDocument.rootVisualElement.Q("AvatarLeft");
+        avartarRight = uiDocument.rootVisualElement.Q("AvatarRight");
     }
 
     private void Update()
@@ -38,8 +48,25 @@ public class ChatUIScript : MonoBehaviour
     public ChatUIScript Hide() {
         Container.style.display = DisplayStyle.None;
         isActive = false;
+        avartarLeft.style.backgroundImage = null;
+        avartarRight.style.backgroundImage = null;
         return this;
     }
+
+    public ChatUIScript RenderAvatar(Texture2D texture2D, Position position)
+    {
+        avartarLeft.style.backgroundImage = null;
+        avartarRight.style.backgroundImage = null;
+        if (position == Position.Left) {
+            avartarLeft.style.backgroundImage = texture2D;
+        } else
+        {
+            avartarRight.style.backgroundImage = texture2D;
+        }
+
+        return this;
+    }
+
 
     public ChatUIScript UpdateText(string text) {
         Label label = uiDocument.rootVisualElement.Q<Label>(TEXT_KEY);

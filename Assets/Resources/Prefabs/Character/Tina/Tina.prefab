@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4607803302092314050}
   - component: {fileID: 2345569849663871755}
   - component: {fileID: 4612933171852973615}
+  - component: {fileID: 3527593078505584653}
   m_Layer: 7
   m_Name: Tina
   m_TagString: Untagged
@@ -81,12 +82,12 @@ SpriteRenderer:
   m_SortingLayerID: -420179789
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5867550875979348339, guid: 1a66f407218720445bad7683861db1ca, type: 3}
+  m_Sprite: {fileID: -1393769399599810470, guid: e93a860366d569749b3f7d95d8d6e6fa, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 0.59375}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -157,8 +158,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.4765625, y: 0.9453125}
-    newSize: {x: 1, y: 0.59375}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -185,10 +186,13 @@ MonoBehaviour:
     Contents: []
     ChatOptions: []
   CharacterInfo:
+    IsPlayer: 0
     race: 0
     classType: 0
     info:
       Level: 0
+      DealthExp: 0
+      CurrentExp: 0
       Name: 
       Description: 
       MaxHealth: 0
@@ -200,6 +204,75 @@ MonoBehaviour:
       BattlePrefab: {fileID: 0}
     Position: {x: 0, y: 0, z: 0}
     Scene: 
+    Equipment:
+      Weapon:
+        No: 
+        ID: 
+        CategoryType: 0
+        EquipmentValues:
+          Level: 0
+          DealthExp: 0
+          CurrentExp: 0
+          Name: 
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 0
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+      Head:
+        No: 
+        ID: 
+        CategoryType: 0
+        EquipmentValues:
+          Level: 0
+          DealthExp: 0
+          CurrentExp: 0
+          Name: 
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 0
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+      Body:
+        No: 
+        ID: 
+        CategoryType: 0
+        EquipmentValues:
+          Level: 0
+          DealthExp: 0
+          CurrentExp: 0
+          Name: 
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 0
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+      Shoe:
+        No: 
+        ID: 
+        CategoryType: 0
+        EquipmentValues:
+          Level: 0
+          DealthExp: 0
+          CurrentExp: 0
+          Name: 
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 0
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
 --- !u!114 &2345569849663871755
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,10 +300,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterInfo:
+    IsPlayer: 0
     race: 0
     classType: 0
     info:
       Level: 0
+      DealthExp: 0
+      CurrentExp: 0
       Name: 
       Description: 
       MaxHealth: 0
@@ -242,3 +318,94 @@ MonoBehaviour:
       BattlePrefab: {fileID: 0}
     Position: {x: 0, y: 0, z: 0}
     Scene: 
+    Equipment:
+      Weapon:
+        No: 
+        ID: 
+        CategoryType: 0
+        EquipmentValues:
+          Level: 0
+          DealthExp: 0
+          CurrentExp: 0
+          Name: 
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 0
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+      Head:
+        No: 
+        ID: 
+        CategoryType: 0
+        EquipmentValues:
+          Level: 0
+          DealthExp: 0
+          CurrentExp: 0
+          Name: 
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 0
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+      Body:
+        No: 
+        ID: 
+        CategoryType: 0
+        EquipmentValues:
+          Level: 0
+          DealthExp: 0
+          CurrentExp: 0
+          Name: 
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 0
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+      Shoe:
+        No: 
+        ID: 
+        CategoryType: 0
+        EquipmentValues:
+          Level: 0
+          DealthExp: 0
+          CurrentExp: 0
+          Name: 
+          Description: 
+          MaxHealth: 0
+          CurrentHealth: 0
+          Speed: 0
+          Attack: 0
+          Defense: 0
+          OverWorldPrefab: {fileID: 0}
+          BattlePrefab: {fileID: 0}
+--- !u!95 &3527593078505584653
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7383701126876434704}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a0044391012cf14589f2822ff5036e1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

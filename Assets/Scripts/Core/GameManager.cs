@@ -82,6 +82,11 @@ public class GameManager : MonoBehaviour
 
     public static void PauseGame()
     {
+        if (IsPaused == true)
+        {
+            return;
+        }
+
         IsPaused = true;
         Time.timeScale = 0f; // 暂停游戏时间
 
@@ -91,6 +96,11 @@ public class GameManager : MonoBehaviour
 
     public static void ResumeGame()
     {
+        if (IsPaused == false)
+        {
+            return;
+        }
+
         IsPaused = false;
         Time.timeScale = 1f; // 恢复游戏时间
 

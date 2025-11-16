@@ -60,6 +60,11 @@ public class PartyManager : MonoBehaviour
         OnPartyManagerInited?.Invoke();
     }
 
+    public bool isInParty(string name)
+    {
+        return AllMembers.Find(d => d.info.Name == name) != null;
+    }
+
     public bool HasJoinedParty(CharacterEntity characterEntity)
     {
         return PartyList.Contains(characterEntity);

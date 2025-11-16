@@ -53,10 +53,10 @@ public class PlayerMove : MonoBehaviour
         // 控制显示方向
         if (playerMove.x > 0)
         {
-            spriteRenderer.flipX = true;
+            spriteRenderer.flipX = false;
         } else if (playerMove.x < 0)
         {
-            spriteRenderer.flipX = false;
+            spriteRenderer.flipX = true;
         }
     }
 

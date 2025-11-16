@@ -1,10 +1,16 @@
 fileFormatVersion: 2
-guid: 1a66f407218720445bad7683861db1ca
+guid: e93a860366d569749b3f7d95d8d6e6fa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5867550875979348339
-    second: Tina-Battle_0
+      213: -1393769399599810470
+    second: Tina_0
+  - first:
+      213: 7704289486747604699
+    second: Tina_1
+  - first:
+      213: 6843186138221027677
+    second: Tina_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +43,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tina-Battle_0
+      name: Tina_0
       rect:
         serializedVersion: 2
-        x: 31
-        y: 6
-        width: 61
-        height: 121
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +121,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 379f7402f6abd6150800000000000000
-      internalID: 5867550875979348339
+      spriteID: a583b069d1658ace0800000000000000
+      internalID: -1393769399599810470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tina_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bd61e5818722bea60800000000000000
+      internalID: 7704289486747604699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tina_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d51aa843981e7fe50800000000000000
+      internalID: 6843186138221027677
       vertices: []
       indices: 
       edges: []
@@ -125,7 +175,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: fbc58de4b8e86b746ba8a4fcddf30348
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +185,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tina-Battle_0: 5867550875979348339
+      Tina_0: -1393769399599810470
+      Tina_1: 7704289486747604699
+      Tina_2: 6843186138221027677
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

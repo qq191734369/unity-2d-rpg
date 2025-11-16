@@ -6,6 +6,7 @@ using System;
 [System.Serializable]
 public class BagEntity
 {
+    public long Gold;
     public List<HumanEquipmentEntity> HumanEquipmentList = new List<HumanEquipmentEntity>();
     public List<HumanItemEntity> HumanItemList = new List<HumanItemEntity>();
 }
@@ -31,6 +32,8 @@ public class HumanEquipmentEntity
     // 装备基本属性
     public BasicValues EquipmentValues;
 
+    public int Price;
+
     // 哪位角色装备
     //public CharacterEntity Character;
 
@@ -40,6 +43,7 @@ public class HumanEquipmentEntity
     {
         ID = other.ID;
         CategoryType = other.CategoryType;
+        Price = other.Price;
         EquipmentValues = new BasicValues(other.EquipmentValues);
     }
 

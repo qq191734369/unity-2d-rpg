@@ -1,0 +1,6 @@
+#Container > #ItemSection > #ItemList > #unity-content-and-vertical-scroll-container > .unity-scroll-view__vertical-scroller {
+    display: flex;
+    opacity: 0;
+    visibility: visible;
+    width: 0;
+}
