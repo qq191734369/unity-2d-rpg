@@ -19,6 +19,7 @@ public class StoreUI : MonoBehaviour,IUIBase
     private List<StoreItemComponent> storeItems = new List<StoreItemComponent>();
     private VisualElement detailContainerElm;
     private VisualElement characterInfoElm;
+    private Label goldValueElm;
 
     private int activeSelectedIndex = -1;
 
@@ -39,6 +40,7 @@ public class StoreUI : MonoBehaviour,IUIBase
         uIDocument.rootVisualElement.style.display = DisplayStyle.None;
         detailContainerElm = uIDocument.rootVisualElement.Q<VisualElement>("DetailContainer");
         characterInfoElm = uIDocument.rootVisualElement.Q<VisualElement>("CharacterInfo");
+        goldValueElm = uIDocument.rootVisualElement.Q<Label>("GoldValue");
 
         GameManager.OnGameInited(Init);
     }
@@ -62,7 +64,12 @@ public class StoreUI : MonoBehaviour,IUIBase
         isActive = false;
     }
 
-    private void generateItems(string key)
+    private void RefreshGoldValue()
+    {
+        goldValueElm.text = bagManager.Gold.ToString();
+    }
+
+    private void GenerateItems(string key)
     {
         var storeInfo = dataManager.GetStoreItemsByKey(key);
         StoreInfo.StoreType type = storeInfo.Type;
@@ -74,7 +81,7 @@ public class StoreUI : MonoBehaviour,IUIBase
         }
     }
 
-    private void renderItems()
+    private void RenderItems()
     {
         storeItems.Clear();
         listContent.Clear();
@@ -106,8 +113,9 @@ public class StoreUI : MonoBehaviour,IUIBase
         uIDocument.rootVisualElement.style.display = DisplayStyle.Flex;
         detailContainerElm.Clear();
         activeSelectedIndex = -1;
-        generateItems(storeKey);
-        renderItems();
+        GenerateItems(storeKey);
+        RenderItems();
+        RefreshGoldValue();
     }
 
     public void Close()
@@ -153,14 +161,25 @@ public class StoreUI : MonoBehaviour,IUIBase
             var newEquip = humanEquipmentSystem.GetHumanEquipmentById(selectedEquipId);
             if (entity == null)
             {
-                bagManager.AddItem(newEquip);
+                if (bagManager.HasEnoughGold(newEquip.Price))
+                {
+                    bagManager.DecreaseGold(newEquip.Price);
+                    bagManager.AddItem(newEquip);
+                    RefreshGoldValue();
+                    instance.Close();
+                }
+                
             }
             else
             {
-                humanEquipmentSystem.Equip(entity, newEquip);
+                if (bagManager.HasEnoughGold(newEquip.Price))
+                {
+                    bagManager.DecreaseGold(newEquip.Price);
+                    humanEquipmentSystem.Equip(entity, newEquip);
+                    RefreshGoldValue();
+                    instance.Close();
+                }
             }
-
-            instance.Close();
         };
         instance.OnChange += (CharacterEntity entity) =>
         {

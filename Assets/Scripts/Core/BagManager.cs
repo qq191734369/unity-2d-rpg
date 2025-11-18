@@ -113,4 +113,35 @@ public class BagManager : MonoBehaviour
        
         return this;
     }
+
+    public long Gold
+    {
+        get
+        {
+            return bagEntity.Gold;
+        }
+    }
+
+    public BagManager AddGold(long gold) {
+        bagEntity.Gold = bagEntity.Gold + gold;
+
+        return this;
+    }
+
+    public BagManager DecreaseGold(long gold)
+    {
+        bagEntity.Gold = bagEntity.Gold - gold;
+
+        if (bagEntity.Gold < 0)
+        {
+            bagEntity.Gold = 0;
+        }
+
+        return this;
+    }
+
+    public bool HasEnoughGold(long target)
+    {
+        return bagEntity.Gold >= target;
+    }
 }

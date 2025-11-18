@@ -6,6 +6,14 @@
             <ui:ScrollView name="ItemList" style="flex-grow: 1;">
                 <ui:VisualElement name="ListContent" style="flex-grow: 1;" />
             </ui:ScrollView>
+            <ui:VisualElement name="BagInfo" style="flex-grow: 1; position: absolute; top: 559px; background-color: rgb(0, 0, 0); border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; border-left-color: rgb(255, 255, 255); border-right-color: rgb(255, 255, 255); border-top-color: rgb(255, 255, 255); border-bottom-color: rgb(255, 255, 255); left: 5px; padding-top: 10px; padding-right: 20px; padding-bottom: 10px; padding-left: 20px;">
+                <ui:VisualElement name="BagInfoContainer" style="flex-grow: 1; flex-direction: row;">
+                    <ui:VisualElement name="GoldInfo" style="flex-grow: 1; flex-direction: row; align-items: center;">
+                        <ui:Label text="金钱:" name="GoldLabel" />
+                        <ui:Label text="1000G" name="GoldValue" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
         <ui:VisualElement name="DetailContainer" style="flex-grow: 1; position: absolute; right: auto; top: 0; left: 870px; background-color: rgb(0, 0, 0);" />
         <ui:VisualElement name="CharacterInfo" style="flex-grow: 1; position: absolute; right: auto; top: 50%; left: 50%; translate: 300px -150px;" />

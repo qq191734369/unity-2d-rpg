@@ -309,7 +309,7 @@ MonoBehaviour:
           Price: 0
     PartyMemberNameList: []
     BagInfo:
-      Gold: 0
+      Gold: 999999
       HumanEquipmentList: []
       HumanItemList: []
 --- !u!114 &8843826754749453712
