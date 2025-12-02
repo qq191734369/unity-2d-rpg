@@ -45,10 +45,21 @@ public class PlayerInteract : MonoBehaviour
         isSleep = false;
     }
 
-    private void HandleJoinParty(CharacterEntity character) {
+    private void HandleJoinParty(CharacterEntity character)
+    {
         partyManager.JoinParty(character);
-        Destroy(currentInteractable.gameObject);
+        if (currentInteractable != null)
+        {
+            Destroy(currentInteractable.gameObject);
+        }
+
         Debug.Log($"{character.info.Name} has joined party");
+    }
+
+    private void OnDestroy()
+    {
+        chatSystem.OnChatDone -= HandleChatDone;
+        chatSystem.OnJoinParty -= HandleJoinParty;
     }
 
     private void DetectPlayerChat()
@@ -61,7 +72,8 @@ public class PlayerInteract : MonoBehaviour
                 ChatSection chatSection = currentInteractable.GetCurrentChatSection();
                 if (chatSection != null && !chatSection.isEmpty())
                 {
-                    if (chatSystem.IsInConversasion || isSleep) {
+                    if (chatSystem.IsInConversasion || isSleep)
+                    {
                         return;
                     }
                     chatSystem.StartChat(currentInteractable);
@@ -70,9 +82,10 @@ public class PlayerInteract : MonoBehaviour
 
                     return;
                 }
-                
+
                 StoreSystem storeSystem = currentInteractable.gameObject.GetComponent<StoreSystem>();
-                if (storeSystem != null) {
+                if (storeSystem != null && (!UIManager.IsUIAcitve && !UIManager.IsChating))
+                {
                     storeSystem.ShowStoreUI();
                 }
             }

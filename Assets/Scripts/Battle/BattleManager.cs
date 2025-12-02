@@ -143,10 +143,12 @@ public class BattleManager : MonoBehaviour
         {
             BattleVisual currentCharacter = charactorBattleVisualList[currentBattleCharacterIndex];
             currentCharacter.battleAction = BattleVisual.BattleAction.Run;
+            battleQueue.Add(currentCharacter);
             currentBattleCharacterIndex++;
 
             if (currentBattleCharacterIndex >= charactorBattleVisualList.Count)
             {
+                battleUI.HideBattlerLabel();
                 // 开始回合演出
                 StartCoroutine(StartBattle());
             }
@@ -279,10 +281,11 @@ public class BattleManager : MonoBehaviour
 
     private IEnumerator StartRunCorotine(BattleVisual current)
     {
+        Debug.Log("start run coroutine");
         int chance = Random.Range(0, 100);
         bool success = chance <= RunChance;
         string text = success ? "成功" : "失败";
-        battleUI.AppendBattleMessage($"逃跑{text}");
+        battleUI.AppendBattleMessage($"{current.entity.info.Name}逃跑{text}");
         yield return new WaitForSeconds(1);
 
         if (success) {

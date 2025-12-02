@@ -18,12 +18,20 @@ MonoBehaviour:
   - m_GUID: 3a2258920b950fc41b7e7935eeea59b5
     m_Address: WorldMap
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 45e197882c35c2744a903b364e643a8c
     m_Address: DebugScene
     m_ReadOnly: 0
-    m_SerializedLabels: []
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be04ecd5a26f6bd4b9d2662fd8b3c6db
+    m_Address: BattleScene
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
     FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7f5c1cec706f8c24482ebffdcb2c9517, type: 2}

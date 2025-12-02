@@ -529,7 +529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 808862340405818633}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UserUICollection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 1630781635648143130}
   - component: {fileID: 8027574391273422425}
   - component: {fileID: 4017110880278302945}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EquipmentUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}

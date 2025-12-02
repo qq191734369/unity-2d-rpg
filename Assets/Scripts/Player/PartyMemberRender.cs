@@ -36,12 +36,19 @@ public class PartyMemberRender : MonoBehaviour
         partyManager.OnPartyMemberChange += FreshPartyVisualList;
     }
 
+    private void OnDisable()
+    {
+        partyManager.OnPartyMemberChange -= FreshPartyVisualList;
+    }
+
     private void FreshPartyVisualList()
     {
         if (MemberVisualList.Count > 0)
         {
             foreach (var item in MemberVisualList)
             {
+                var entity = item.GetComponent<CharactorInfo>().CharacterInfo;
+                entity.Position = item.transform.position;
                 Destroy(item);
             }
             MemberVisualList.Clear();

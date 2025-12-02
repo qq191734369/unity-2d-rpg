@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5461131794100189859}
   - component: {fileID: 503410848544058678}
   - component: {fileID: 7418604578977540112}
+  - component: {fileID: 5443038617905597758}
   - component: {fileID: 5068900955027074351}
   - component: {fileID: 4456663356268808822}
   - component: {fileID: 5615916062341943008}
@@ -138,6 +139,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
+--- !u!114 &5443038617905597758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8011895585081216280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0222b4e63a88bff499b2e430e926150d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  maxStepsToEncounter: 5
+  minStepsToEncounter: 10
 --- !u!114 &5068900955027074351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,8 +182,8 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: df70fa95-8a34-4494-b137-73ab6b9c7d37
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!50 &4456663356268808822
@@ -254,6 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterInfo:
+    Id: 
     IsPlayer: 0
     race: 0
     classType: 0
@@ -290,6 +309,7 @@ MonoBehaviour:
           Defense: 0
           OverWorldPrefab: {fileID: 0}
           BattlePrefab: {fileID: 0}
+        Price: 0
       Head:
         No: 
         ID: 
@@ -307,6 +327,7 @@ MonoBehaviour:
           Defense: 0
           OverWorldPrefab: {fileID: 0}
           BattlePrefab: {fileID: 0}
+        Price: 0
       Body:
         No: 
         ID: 
@@ -324,6 +345,7 @@ MonoBehaviour:
           Defense: 0
           OverWorldPrefab: {fileID: 0}
           BattlePrefab: {fileID: 0}
+        Price: 0
       Shoe:
         No: 
         ID: 
@@ -341,6 +363,7 @@ MonoBehaviour:
           Defense: 0
           OverWorldPrefab: {fileID: 0}
           BattlePrefab: {fileID: 0}
+        Price: 0
 --- !u!95 &3848458157449284174
 Animator:
   serializedVersion: 7

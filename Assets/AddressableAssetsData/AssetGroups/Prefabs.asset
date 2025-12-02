@@ -14,7 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_GroupName: Prefabs
   m_GUID: 707d0c500a5f26646961f0920cf6d633
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 273116b24f24b394f8baa142ed98ad99
+    m_Address: GameManager
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 7f5c1cec706f8c24482ebffdcb2c9517, type: 2}
   m_SchemaSet:

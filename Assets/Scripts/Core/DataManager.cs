@@ -144,6 +144,9 @@ public class CharacterEntity
     public Vector3 Position;
     public string Scene;
     public CharacterEquipment Equipment;
+    public CarEntity CarInfo;
+    // 上一次乘坐的车
+    public string PreCarId;
 
     public int Attack
     {

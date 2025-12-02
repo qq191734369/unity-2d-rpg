@@ -141,6 +141,7 @@ public class SceneLoader : MonoBehaviour
     }
 }
 
+[System.Serializable]
 public class SceneEnemyInfo
 {
     public string Name;

@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 
 public class CharacterSelectorUI : MonoBehaviour,IUIBase
 {
-    const int SORTING_ORDER = 1003;
+    const int SORTING_ORDER = 1001;
 
     public event System.Action<CharacterEntity> OnSelect;
     public event System.Action<CharacterEntity> OnChange;
@@ -105,8 +105,10 @@ public class CharacterSelectorUI : MonoBehaviour,IUIBase
 
     public void Close()
     {
-        StartCoroutine(CloseCoroutine());
+        //StartCoroutine(CloseCoroutine());
         isActive = false;
+        UIManager.Pop(this);
+        Destroy(gameObject);
         OnDestroy?.Invoke();
     }
 

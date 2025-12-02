@@ -535,8 +535,8 @@
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Drawing\Views\IdentifierField.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Graphs\Matrix4ShaderProperty.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Nodes\Input\PBR\DielectricSpecularNode.cs" />
-    <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Drawing\Views\ReorderableSlotListView.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Graphs\NormalMaterialSlot.cs" />
+    <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Drawing\Views\ReorderableSlotListView.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Generation\Descriptors\SubShaderDescriptor.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Data\Nodes\Utility\DropdownNode.cs" />
     <Compile Include="Library\PackageCache\com.unity.shadergraph@bbc2145cfdb2\Editor\Drawing\Inspector\PropertyDrawers\GraphDataPropertyDrawer.cs" />

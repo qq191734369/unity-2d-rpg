@@ -171,6 +171,8 @@ public class MainMenuUI : MonoBehaviour, IUIBase
         characterSelector.OnSelect += (CharacterEntity entity) =>
         {
             Debug.Log($"Equip ui Select character {entity.info.Name}");
+            characterSelector.Close();
+
             EquipmentUI eq = equipmentUI.GetComponent<EquipmentUI>();
             eq.Show(entity);
         };

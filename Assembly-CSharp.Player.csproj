@@ -70,11 +70,13 @@
     <Compile Include="Assets\Resources\UI\BagUI\BagUI.cs" />
     <Compile Include="Assets\Resources\UI\EquipmentUI\components\CharacterInfoCardComponent\CharacterInfoCardComponent.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
+    <Compile Include="Assets\Scripts\CarSystem\CarEntity.cs" />
     <Compile Include="Assets\Resources\UI\components\CharacterSelectorUI\CharacterItemUI.cs" />
     <Compile Include="Assets\Resources\UI\BagUI\components\EquipmentItem\EquipmentItem.cs" />
+    <Compile Include="Assets\Scripts\CarSystem\CarSystem.cs" />
     <Compile Include="Assets\Scripts\Core\StoreSystem.cs" />
-    <Compile Include="Assets\Scripts\UI\BattleVisualUI.cs" />
     <Compile Include="Assets\Scripts\Battle\BattleHealthBar.cs" />
+    <Compile Include="Assets\Scripts\Battle\EnemyLayer.cs" />
     <Compile Include="Assets\Resources\UI\StoreUI\StoreUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
@@ -98,6 +100,7 @@
     <Compile Include="Assets\Scripts\Utils\NoGenerator.cs" />
     <Compile Include="Assets\Scripts\Battle\BattleUI.cs" />
     <Compile Include="Assets\Scripts\Core\InteractableObject.cs" />
+    <Compile Include="Assets\Scripts\Battle\EncounterSystem.cs" />
     <Compile Include="Assets\Resources\UI\EquipmentUI\components\EquipmentInfoContainerComponent\EquipmentInfoContainerComponent.cs" />
     <Compile Include="Assets\Resources\UI\EquipmentUI\components\CharacterInfoItemComponent\CharacterInfoItemComponent.cs" />
     <Compile Include="Assets\Scripts\Core\CharactorInfo.cs" />
@@ -117,11 +120,13 @@
     <Compile Include="Assets\Scripts\Utils\MonsterInfoParser.cs" />
     <Compile Include="Assets\Scripts\Core\DataManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
+    <Compile Include="Assets\InputSystem_Actions.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Resources\UI\EquipmentUI\components\EquipListItemComponent.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\Resources\UI\components\CharacterInfoCard\CommonCharacterInfoCardComponent.cs" />
+    <Compile Include="Assets\Scripts\CarSystem\CarEquipnent.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerMove.cs" />
     <Compile Include="Assets\Scripts\Core\GameActions.cs" />

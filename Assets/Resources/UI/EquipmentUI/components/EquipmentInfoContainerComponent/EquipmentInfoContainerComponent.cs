@@ -26,6 +26,7 @@ public partial class EquipmentInfoContainerComponent : VisualElement
 
         container.Clear();
 
+        container.Add(new EquipmentInfoLineComponent("No:", equipmentEntity.No));
         container.Add(new EquipmentInfoLineComponent("攻击力:", info.Attack.ToString()));
         container.Add(new EquipmentInfoLineComponent("防御力:", info.Defense.ToString()));
         container.Add(new EquipmentInfoLineComponent("速度:", info.Speed.ToString()));

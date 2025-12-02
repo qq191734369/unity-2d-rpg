@@ -36,6 +36,12 @@ public class PlayerMove : MonoBehaviour
         
     }
 
+    public Vector2 GetPlayerMove()
+    {
+        return playerMove;
+    }
+
+
     void OnMove(InputValue inputValue)
     {
         if (GameManager.IsPaused)
